@@ -37,9 +37,56 @@ import ProfilePage from "./profile/profilepage";
 import UserHome from "./userpages/userhomepage";
 import BiddingForm from "./components/biddingform";
 import TenderDetail from "./components/tenderdetail";
+import { setContext } from '@apollo/client/link/context';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+  from,
+} from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
+
+
+const errorLink = onError(({ graphqlErrors, networkError }) => {
+  if (graphqlErrors) {
+      graphqlErrors.map(({ message, location, path }) => {
+          alert(`Graphql error ${message}`);
+      });
+  }
+});
+
+const link = from([
+  errorLink,
+  new HttpLink({
+
+      // uri: "http://localhost:5050/v1/graphql"
+      uri: 'http://localhost:8080/v1/graphql'
+
+  }),
+]);
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  // const token = localStorage.getItem('token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      "x-hasura-admin-secret": "myadminsecretkey",
+    }
+  }
+});
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link:authLink.concat(link),
+});
+
 
 function App() {
   return (
+    <ApolloProvider client={client}>
     <Router>
       <div className="App">
         <NavbarUser />
@@ -64,7 +111,7 @@ function App() {
 
 
 
-        {/* <Routes>
+        <Routes>
         <Route path="/" element={<LandingPage />} />
           <Route path="/userhome" element={<UserHome />} />
           <Route path="/login" element={<SignInSide />} />
@@ -77,10 +124,11 @@ function App() {
           <Route path="/profilepage" element={<ProfilePage />} />
           <Route path="/biddingform" element={<BiddingForm />} />
           
-        </Routes> */}
+        </Routes>
         <FooterUser />
       </div>
     </Router>
+    </ApolloProvider>
   );
 }
 

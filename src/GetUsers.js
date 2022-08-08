@@ -13,11 +13,11 @@ function GetUsers() {
 
   return (
     <div>
-      {" "}
       {users.map((val) => {
         return <div>
-        <h1> {val.first_name}</h1>
-        <h2>{val.email}</h2>
+          <h1> {val.first_name}</h1>
+          <h2>{val.email}</h2>
+          <h5>{val.phone_no}</h5>
         </div>;
       })}
     </div>

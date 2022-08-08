@@ -1,12 +1,28 @@
 import { Button } from "@material-tailwind/react";
 import {useNavigate} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useQuery, gql } from "@apollo/client";
+import { LOAD_USERS } from "../GraphQL/Queries";
+
 function UserHomeTop() {
   const navigate = useNavigate();
 
   const navigateToProfilepage = () => {
     navigate('/profilepage');
   };
+  
+  const { error, loading, data } = useQuery(LOAD_USERS);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    if (data) {
+      setUsers(data.user_account);
+    }
+  }, [data]);
+
   return (
+  
+      
+
     <div className="bg-gradient-to-r from-pink-800 to-sky-800 shadow-lg rounded mx-8 mb-4 p-8  md:bg-orange h-35 grid grid-cols-8 ">
       <div class="text-center columns-2 col-span-2 ">
         <img
@@ -14,7 +30,12 @@ function UserHomeTop() {
           class="rounded-full w-20 mb-4 mx-auto "
           alt="Avatar"
         />
-        <h5 class="text-xl text-white font-medium leading-tight mb-2">John Doe</h5>
+        <h5 class="text-xl text-white font-medium leading-tight mb-2">
+          {users.map((val) => {
+        return <div>
+          <h1> {val.first_name} {val.last_name}</h1>
+        </div>;
+      })}</h5>
         <p class="text-white">Web designer</p>
       </div>
 
