@@ -1,7 +1,9 @@
 import { Button } from "@material-tailwind/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
+import { TENDER_DETAILS } from "../GraphQL/Queries";
 
 function TenderDetail() {
+  const {id} = useParams();
   const navigate = useNavigate();
 
   const navigateToProfilePage = () => {
@@ -11,17 +13,27 @@ function TenderDetail() {
     navigate('/biddingform');
   };
 
+  // const { error, loading, data } = useQuery(TENDER_DETAILS);
+  // const [tenders, setTenders] = useState([]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setTenders(data.tenders);
+  //   }
+  // }, [data]);
+
+
   return (
     <div>
-      <div class="px-20 justify-center py-14 bg-gray-300">
-        <div class="block rounded-lg shadow-lg bg-white text-center h-fit border-2 p-6">
-            <h5 class="text-gray-900 text-xl font-medium mb-2">
+      <div className="px-20 justify-center py-14 bg-gray-300">
+        <div className="block rounded-lg shadow-lg bg-white text-center h-fit border-2 p-6">
+            <h5 className="text-gray-900 text-xl font-medium mb-2">
               ተጨማሪ ዝርዝር መረጃ
             </h5>
+            <h1>{id}</h1>
 
             <div className="grid xs:rows-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-7  h-full ">
-              
-              <p class="sm:col-span-3 md:col-span-3 lg:col-span-6 text-gray-700 text-base mb-4">
+              <div  className="sm:col-span-3 md:col-span-3 lg:col-span-6 text-gray-700 text-base mb-4">
+              <p>
 
                <strong> ORGANIZATION FOR WELFARE AND DEVELOPMENT IN ACTION
 
@@ -35,6 +47,13 @@ function TenderDetail() {
                 highly vulnerable community members, including pregnant and lactating women, elderly and children, female-headed households, 
                 IDPs, and people with disabilities in the Somali Region.
               </p>
+              <div>Category</div>
+              <div>Closing Date</div>
+              <p>Created at</p><br/>
+              <p>asdfasf</p>
+              <p>asdfasf</p>
+              </div>
+
               <div className="flex flex-col space-y-8">
                 <Button
                   className="-fit bg-blue-600 text-white col-end-9"

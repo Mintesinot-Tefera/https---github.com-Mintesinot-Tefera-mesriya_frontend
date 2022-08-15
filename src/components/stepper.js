@@ -10,9 +10,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import SignIn from '../authentication/signin';
-import SignInCard from './signincard';
-import SignInCard1 from './signincard1';
+import LandingPage from './landingpage';
+
 
 
 
@@ -58,11 +57,11 @@ const steps = ['Shipping address', 'Payment details', 'Review your order'];
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <SignIn />;
+      return <LandingPage />;
     case 1:
-      return <SignInCard />;
+      return <LandingPage />;
     case 2:
-      return <SignInCard1 />;
+      return <LandingPage />;
     default:
       throw new Error('Unknown step');
   }

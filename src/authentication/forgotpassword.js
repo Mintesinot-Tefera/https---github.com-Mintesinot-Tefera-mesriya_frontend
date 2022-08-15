@@ -29,7 +29,7 @@ export default function ForgotPassword() {
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-100 dark:border-gray-300 ">
+        <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-100 dark:border-gray-300 ">
       
         <Box
           sx={{

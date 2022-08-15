@@ -8,7 +8,7 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import SignIn from '../authentication/signin';
+import LandingPage from './landingpage';
 
 const useStyles = makeStyles((theme) =>
 createStyles({
@@ -39,11 +39,11 @@ function getStepContent(step) {
 switch (step) {
 	case 0:
 	return (
-		<SignIn/>
+		<LandingPage/>
 	);
 	case 1:
 	return (
-		<form class="form-group">
+		<form className="form-group">
 		<label>High School Percentage</label>
 		<input type="number" placeholder="High School Percentage"></input>
 		<br></br>
@@ -53,7 +53,7 @@ switch (step) {
 	);
 	case 2:
 	return (
-		<form class="form-group">
+		<form className="form-group">
 		<label>Permanent Address</label>
 		<input type="text" placeholder="Permanent Address"></input>
 		<br></br>

@@ -5,7 +5,6 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import SignIn from '../authentication/signin';
 import TenderCreator1 from './tendercreator1';
 import TenderCreator2 from './tendercreator2';
 import { KeyboardReturnOutlined } from '@material-ui/icons';
@@ -43,7 +42,7 @@ function getStepContent(step) {
     case 4:
       return (
 
-        <form class="form-group">
+        <form className="form-group">
           <label>Permanent Address</label>
           <input type="text" placeholder="Permanent Address"></input>
           <br></br>
@@ -103,7 +102,7 @@ export default function TenderCreatorStepper() {
 
   return (
     <div className="sm:px-10 lg:px-20  bg-gray-300 h-fit lg:h-screen xl:h-screen pt-8 pb-32" >
-      <h5 class="text-gray-900 text-xl font-medium mb-2">
+      <h5 className="text-gray-900 text-xl font-medium mb-2">
         ጨረታ መልቀቂያ
       </h5>
       <div sx={{ width: '100%' }} className="block rounded-lg shadow-lg bg-white text-center h-full grid grid-cols-2 divide-x-2 border-2 ">

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,302 +12,251 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import SignInRight from "../components/signinright";
+import SignInLeft from "./signinleft";
+import { INSERT_USER_ACCOUNT } from "../GraphQL/Mutations";
+import { useMutation } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
+
+
 
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const [firstNameInput, setFirstName] = useState("");
+  const [lastNameInput, setLastName] = useState("");
+  const [phoneNumberInput, setPhoneNumber] = useState("");
+  const [emailInput, setEmail] = useState();
+  const [passwordInput, setPassword] = useState("");
+  const [usernameInput, setUserName] = useState();
+  const [confirmPasswordInput, setConfirmPassword] = useState("");
+
+  const [add_user, { error }] = useMutation(INSERT_USER_ACCOUNT)
+
+  const navigate = useNavigate();
+  const navigateToLogin = () => {
+    navigate('/login');
   };
 
-  return (
-    <div class="grid grid-cols-2 gap-4 justify-items-center dark:bg-gray-700" >
-      <SignInRight />
-      {/* <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-100 dark:border-gray-300">
-         
-        01</div> */}
-      <div class="max-w-lg bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-100 dark:border-gray-300 ">
-        <Box
-          sx={{
-            my: 6,
-            mx: 4,
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (passwordInput === confirmPasswordInput) {
+    var x = add_user({
+        variables: {
+          first_name: firstNameInput,
+          last_name: lastNameInput,
+          phone_no: phoneNumberInput,
+          user_name: usernameInput,
+          email: emailInput,
+          password: passwordInput
+        }
 
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign Up
-          </Typography>
+      });
+    console.log(x.data);
+    }
+
+      // navigateToLogin();
+    
+    // }
+    // else {
+    //   console.log("password doesn't match");
+    // }
+
+    // if (error) {
+    //   console.log(error);
+    
+    // }
+    console.log("hello");
+
+  }
+
+  return (
+    <div className="grid grid-cols-2 gap-2 justify-items-center bg-gray-100 dark:bg-gray-700" >
+      <SignInLeft />
+      <div className="m-20">
+        <div className="max-w-xl bg-gray-100 rounded-lg border border-gray-200 shadow-md dark:bg-gray-100 dark:border-gray-300">
           <Box
-            component="form"
             sx={{
-              "& .MuiTextField-root": { m: 1, width: "25ch" },
+              my: 6,
+              mx: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
-            noValidate
-            autoComplete="off"
           >
-            <div></div>
-            <div>
-              <Grid container spacing={2} columns={16}>
-                <Grid item lg={8}>
-                  <TextField
-                    autoComplete="given-name"
-                    name="firstName"
-                    required
-                    fullWidth
-                    id="firstName"
-                    label="First Name"
-                    autoFocus
-                    size="small"
-                  />
-                </Grid>
-                <Grid item lg={8}>
-                  <TextField
-                    autoComplete="given-name"
-                    name="middleName"
-                    required
-                    fullWidth
-                    id="middleName"
-                    label="Middle Name"
-                    autoFocus
-                    size="small"
-                  />
-                </Grid>
-              </Grid>
-              <Grid container spacing={2} columns={16}>
-                <Grid item lg={8}>
-                  <TextField
-                    autoComplete="given-name"
-                    name="firstName"
-                    required
-                    fullWidth
-                    id="firstName"
-                    label="First Name"
-                    autoFocus
-                    size="small"
-                  />
-                </Grid>
-                <Grid item lg={8}>
-                  <TextField
-                    autoComplete="given-name"
-                    name="middleName"
-                    required
-                    fullWidth
-                    id="middleName"
-                    label="Middle Name"
-                    autoFocus
-                    size="small"
-                  />
-                </Grid>
-              </Grid>
-              <Grid item xs={8} sm={4} justifyContent="flex-start" >
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                  size="small"
-                />
-              </Grid>
-              <Grid container spacing={2} columns={16}>
-                <Grid item lg={8}>
-                  <TextField
-                    autoComplete="given-name"
-                    name="firstName"
-                    required
-                    fullWidth
-                    id="firstName"
-                    label="First Name"
-                    autoFocus
-                    size="small"
-                  />
-                </Grid>
-                <Grid item lg={8}>
-                  <TextField
-                    autoComplete="given-name"
-                    name="middleName"
-                    required
-                    fullWidth
-                    id="middleName"
-                    label="Middle Name"
-                    autoFocus
-                    size="small"
-                  />
-                </Grid>
-              </Grid>
-              
-              <Button
-                 type="submit"
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign In
-              </Button>
-            </div>
-          </Box>
-          {/* <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              size="small"
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              size="small"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign Up
+            </Typography>
+            <Box
+              component="form"
+              sx={{
+                "& .MuiTextField-root": { m: 1, width: "25ch" },
+              }}
+              noValidate
+              autoComplete="off"
+              onSubmit={handleSubmit} 
+
             >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </Box> */}
-        </Box>
+              <div>
+                <Grid container spacing={2} columns={16}>
+                  <Grid item lg={8}>
+                    <TextField
+                      autoComplete="given-name"
+                      name="firstName"
+                      required
+                      fullWidth
+                      id="firstName"
+                      label="የመጀመሪያ ስም"
+                      autoFocus
+                      size="medium"
+                      onChange={(e) => {
+                        setFirstName(e.target.value);
+                      }
+                      }
+                    />
+                  </Grid>
+                  <Grid item lg={8}>
+                    <TextField
+                      autoComplete="given-name"
+                      name="middleName"
+                      required
+                      fullWidth
+                      id="middleName"
+                      label="የአባት ስም"
+                      autoFocus
+                      size="medium"
+                      onChange={(e) => {
+                        setLastName(e.target.value);
+                      }
+                      }
+
+
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} columns={16}>
+                  <Grid item lg={8}>
+                    <TextField
+                      autoComplete="given-name"
+                      name="phoneNumber"
+                      required
+                      fullWidth
+                      type="number"
+                      id="phoneNumber"
+                      label="ስልክ ቁጥር"
+                      autoFocus
+                      size="medium"
+                      onChange={(e) => {
+                        setPhoneNumber(e.target.value);
+                      }
+                      }
+                    />
+                  </Grid>
+                  <Grid item lg={8}>
+                    <TextField
+                      autoComplete="given-name"
+                      name="age"
+                      required
+                      fullWidth
+                      type="number"
+                      id="age"
+                      label="አድሜ"
+                      autoFocus
+                      size="medium"
+
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={2} columns={16}>
+                  <Grid item lg={8}>
+                    <TextField
+                      autoComplete="given-name"
+                      name="email"
+                      required
+                      fullWidth
+                      id="email"
+                      type="text"
+                      label="ኢሜይል"
+                      autoFocus
+                      size="medium"
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }
+                      }
+                    />
+                  </Grid>
+                  <Grid item lg={8}>
+
+                    <TextField
+                      autoComplete="given-name"
+                      name="username"
+                      required
+                      fullWidth
+                      id="username"
+                      type="text"
+                      label="username"
+                      autoFocus
+                      size="medium"
+                      onChange={(e) => {
+                        setUserName(e.target.value);
+                      }
+                      }
+                    />
+                  </Grid>
+
+                </Grid>
+
+                <Grid container spacing={2} columns={16}>
+                  <Grid item lg={8}>
+                    <TextField
+                      autoComplete="given-name"
+                      name="password"
+                      required
+                      fullWidth
+                      id="password"
+                      label="የሚስጥር ቃል"
+                      autoFocus
+                      size="medium"
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }
+                      }
+                    />
+                  </Grid>
+                  <Grid item lg={8}>
+                    <TextField
+                      autoComplete="given-name"
+                      name="confirmpassword"
+                      required
+                      fullWidth
+                      id="confirmpassword"
+                      label="የሚስጥር ቃል ድገም"
+                      autoFocus
+                      size="medium"
+                      onChange={(e) => {
+                        setConfirmPassword(e.target.value);
+                      }}
+                    />
+
+                  </Grid>
+                </Grid>
+
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                  // onClick={handleSubmit}
+                >
+                  Sign Up
+                </Button>
+              </div>
+            </Box>
+          </Box>
+        </div>
       </div>
     </div>
   );
-  // <ThemeProvider theme={theme}>
-  //   <Grid container component="main" sx={{ height: "100vh" }}>
-  //     <CssBaseline />
-  //     <Grid
-  //       item
-  //       xs={false}
-  //       sm={4}
-  //       md={7}
-  //       sx={{
-  //         backgroundImage: "url(https://source.unsplash.com/random)",
-  //         backgroundRepeat: "no-repeat",
-  //         backgroundColor: (t) =>
-  //           t.palette.mode === "light"
-  //             ? t.palette.grey[50]
-  //             : t.palette.grey[900],
-  //         backgroundSize: "cover",
-  //         backgroundPosition: "center",
-  //       }}
-  //     />
-  //     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-  //       <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
-  //         <Box
-  //           sx={{
-  //             my: 8,
-  //             mx: 4,
-  //             display: "flex",
-  //             flexDirection: "column",
-  //             alignItems: "center",
-  //             justifyContent: "center"
-  //           }}
-  //         >
-  //           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-  //             <LockOutlinedIcon />
-  //           </Avatar>
-  //           <Typography component="h1" variant="h5">
-  //             Sign in
-  //           </Typography>
-  //           <Box
-  //             component="form"
-  //             noValidate
-  //             onSubmit={handleSubmit}
-  //             sx={{ mt: 1 }}
-  //           >
-  //             <TextField
-  //               margin="normal"
-  //               required
-  //               fullWidth
-  //               id="email"
-  //               label="Email Address"
-  //               name="email"
-  //               autoComplete="email"
-  //               autoFocus
-  //             />
-  //             <TextField
-  //               margin="normal"
-  //               required
-  //               fullWidth
-  //               name="password"
-  //               label="Password"
-  //               type="password"
-  //               id="password"
-  //               autoComplete="current-password"
-  //             />
-  //             <FormControlLabel
-  //               control={<Checkbox value="remember" color="primary" />}
-  //               label="Remember me"
-  //             />
-  //             <Button
-  //               type="submit"
-  //               fullWidth
-  //               variant="contained"
-  //               sx={{ mt: 3, mb: 2 }}
-  //             >
-  //               Sign In
-  //             </Button>
-  //             <Grid container>
-  //               <Grid item xs>
-  //                 <Link href="#" variant="body2">
-  //                   Forgot password?
-  //                 </Link>
-  //               </Grid>
-  //               <Grid item>
-  //                 <Link href="#" variant="body2">
-  //                   {"Don't have an account? Sign Up"}
-  //                 </Link>
-  //               </Grid>
-  //             </Grid>
-  //           </Box>
-  //         </Box>
-  //       </div>
-  //     </Grid>
-  //   </Grid>
-  // </ThemeProvider>
-  // );
+
 }

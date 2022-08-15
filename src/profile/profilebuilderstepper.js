@@ -42,7 +42,7 @@ function getStepContent(step) {
         case 4:
             return (
 
-                <form class="form-group">
+                <form className="form-group">
                     <label>Permanent Address</label>
                     <input type="text" placeholder="Permanent Address"></input>
                     <br></br>
@@ -104,17 +104,17 @@ export default function ProfileBuilderStepper() {
         <div className="mx-20 justify-center my-2" >
 
             <div sx={{ width: '100%' }} className="block bg-white text-center h-fit grid grid-cols-3 bg-gray-300">
-                <div class="grid grid-rows-3">
-                    <div class="flex flex-row items-center pb-10  gap-x-6">
-                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
+                <div className="grid grid-rows-3">
+                    <div className="flex flex-row items-center pb-10  gap-x-6">
+                        <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
                         <div>
-                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
+                            <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
+                            <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
                         </div>
                     </div>
-                    <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h4 class="mb-2 text-2xl tracking-tight text-gray-900 dark:text-white">ስለ ድርጅታችሁ ይግለጹ</h4>
-                        <h4 class="mb-2 text-2xl tracking-tight text-gray-900 dark:text-white">ይህ ገጽ የናንተን ማንነት የሚገልጹበት ድረ ገጽ ስለሆነ ተጠንቅቀው ይሙሉ</h4>
+                    <div className="flex flex-col justify-between p-4 leading-normal">
+                        <h4 className="mb-2 text-2xl tracking-tight text-gray-900 dark:text-white">ስለ ድርጅታችሁ ይግለጹ</h4>
+                        <h4 className="mb-2 text-2xl tracking-tight text-gray-900 dark:text-white">ይህ ገጽ የናንተን ማንነት የሚገልጹበት ድረ ገጽ ስለሆነ ተጠንቅቀው ይሙሉ</h4>
                     </div>
                     <Stepper activeStep={activeStep}>
                         {steps.map((label, index) => {
@@ -154,7 +154,7 @@ export default function ProfileBuilderStepper() {
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
-                        <div class="block rounded-lg shadow-lg bg-white text-center h-fit border-2 col-span-2">
+                        <div className="block rounded-lg shadow-lg bg-white text-center h-fit border-2 col-span-2">
                             <Typography sx={{ mt: 2, mb: 1 }}>
                                 {getStepContent(activeStep)}
                             </Typography>

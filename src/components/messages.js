@@ -4,12 +4,12 @@ import App from "../messaging/App/index"
 // import { Button } from "@material-tailwind/react";
 function Messages() {
   return (
-      <div class=" px-20 justify-center pt-10 pb-3 bg-gray-300">
-        <h5 class="text-gray-900 text-xl font-medium mb-2">
+      <div className=" px-20 justify-center pt-10 pb-3 bg-gray-300">
+        <h5 className="text-gray-900 text-xl font-medium mb-2">
         መልእክቶች
             </h5>
-        <div class="block rounded-lg shadow-lg bg-white text-center h-fit border-2 focus:border-blue-500">
-          <div class="p-6 h-full">
+        <div className="block rounded-lg shadow-lg bg-white text-center h-fit border-2 focus:border-blue-500">
+          <div className="p-6 h-full">
             <App/>
 
             
