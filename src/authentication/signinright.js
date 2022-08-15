@@ -20,8 +20,12 @@ import { useNavigate } from "react-router-dom";
 function SignInRight() {
   const navigate = useNavigate();
 
-  const navigateUserhome = (id) => {
-    navigate(`/userhome/${id}`)
+  // const navigateUserhome = (id) => {
+  //   navigate(`/userhome/${id}`)
+  // };
+
+  const navigateUserhome = () => {
+    navigate(`/userhome`)
   };
 
   const [emailInput, setEmail] = useState();
@@ -38,7 +42,10 @@ function SignInRight() {
     loginuser();
     if (data) {
       // console.log(data.user_account[0].user_name);
-      navigateUserhome(data.user_account[0].id);
+      // navigateUserhome(data.user_account[0].id);
+      window.localStorage.setItem("userid", data.user_account[0].id);
+      navigateUserhome();
+
     }
 
     // useEffect(() => {
@@ -70,67 +77,66 @@ function SignInRight() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box
-            component="form"
-            noValidate
+          <form
             onSubmit={handleSubmit}
-            sx={{ mt: 1 }}>
+            noValidate
 
+          >
             <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              size="medium"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }
-              }
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              size="medium"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }
-              }
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" size="medium" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <div>
-              <Link href="#" variant="body2" fontSize={17}>
-                Forgot password?
-              </Link>
-            </div>
-            <div>
-              <Link
-                to="/register"
-                variant="body2" fontSize={17}>
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </div>
-          </Box>
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                size="medium"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }
+                }
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                size="medium"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }
+                }
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" size="medium" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+              <div>
+                <Link href="#" variant="body2" fontSize={17}>
+                  Forgot password?
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to="/register"
+                  variant="body2" fontSize={17}>
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </div>
+          </form>
         </Box>
       </div>
     </div>

@@ -1,27 +1,23 @@
 import { Button } from "@material-tailwind/react";
 import { Divider } from "@mui/material";
-import {useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useQuery, useLazyQuery, gql } from "@apollo/client";
 import { LOGGED_IN_USER_COMPANY_PAGE } from "../GraphQL/Queries";
 function ProfilePage() {
+    const companyidfromlocalstorage = window.localStorage.getItem("companyid");
 
-    const { id } = useParams();
+    // const { id } = useParams();
     const navigate = useNavigate();
 
-    const navigateToProfilepage = (id2) => {
-        navigate(`/profilepage/${id2}`);
-    };
-
-
     const { error, loading, data } = useQuery(LOGGED_IN_USER_COMPANY_PAGE, {
-        variables: { id: id }
+        variables: { id: companyidfromlocalstorage }
     });
 
-    if(data){
+    if (data) {
         console.log(data);
         console.log(data.company_page_by_pk.company_name);
-
+        console.log("minteee")
     }
 
     return (
@@ -46,18 +42,19 @@ function ProfilePage() {
                             </Button>
                         </div>
                         <div className="row-span-6">
-                        <h5 className="text-black text-xl font-semibold tracking-tight dark:text-white place-self-center">
+                            <h5 className="text-black text-xl font-semibold tracking-tight dark:text-white place-self-center">
                                 Company Description
-                            </h5>    
+                            </h5>
                             <h2 className="text-white text-l font-semibold tracking-tight dark:text-white place-self-center">
-                                {data.company_page_by_pk.company_name}
+                                {data ? data.company_page_by_pk.company_name : "nouser"}
+
                             </h2>
-                            <br/>
+                            <br />
                             <h3 className="text-blacl text-xl font-semibold tracking-tight dark:text-white place-self-center">
                                 Who are you?
                             </h3>
                             <h3 className="text-white text-md font-semibold tracking-tight dark:text-white place-self-center">
-                                {data.company_page_by_pk.company_details}
+                                {data ? data.company_page_by_pk.company_details: "nouser"}
                             </h3>
                         </div>
 
@@ -69,17 +66,28 @@ function ProfilePage() {
             <div className="grid grid-cols-3 my-20 px-32 gap-x-10">
                 <a href="#" className="h-fit w-fit block p-6 bg-sky-800 rounded-lg border border-gray-200 shadow-md hover:bg-sky-900 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">Goals</h5>
-                    <p className="font-normal text-white dark:text-gray-400">{data.company_page_by_pk.goals}</p>
+                    <p className="font-normal text-white dark:text-gray-400">
+                        {/* {data.company_page_by_pk.goals} */}
+                        Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+
+                    </p>
                 </a>
 
                 <a href="#" className="h-fit w-fit block p-6 bg-sky-800 rounded-lg border border-gray-200 shadow-md hover:bg-sky-900 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">Mission</h5>
-                    <p className="font-normal text-white dark:text-gray-400">{data.company_page_by_pk.mission}</p>
+                    <p className="font-normal text-white dark:text-gray-400">
+                        {/* {data.company_page_by_pk.mission} */}
+                        Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+
+                    </p>
                 </a>
 
                 <a href="#" className="h-fit w-fit block p-6 bg-sky-800 rounded-lg border border-sky-900 shadow-md hover:bg-sky-900 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">Story</h5>
-                    <p className="font-normal text-white dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <p className="font-normal text-white dark:text-gray-400">
+                        {/* {data.company_page_by_pk.goals} */}
+                        Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+                    </p>
                 </a>
             </div>
             <Divider />

@@ -114,12 +114,12 @@ function App() {
             <Route path="/login" element={<SignIn />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
-            <Route path="/userhome/:id" element={<UserHome />} />
+            <Route path="/userhome" element={<UserHome />} />
             <Route path="/viewbids" element={<ViewBids />} />
             <Route path="/tendercreator" element={<TenderCreatorStepper />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/tenderdetail/:id" element={<TenderDetail />} />
-            <Route path="/profilepage/:id" element={<ProfilePage />} />
+            <Route path="/profilepage" element={<ProfilePage />} />
             <Route path="/biddingform" element={<BiddingForm />} />
 
           </Routes>
