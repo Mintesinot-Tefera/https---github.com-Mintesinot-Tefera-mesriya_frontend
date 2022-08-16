@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useQuery, useLazyQuery, gql } from "@apollo/client";
 import { LOGGED_IN_USER_COMPANY_PAGE } from "../GraphQL/Queries";
-function ProfilePage() {
+function ProfilePageMine() {
     const companyidfromlocalstorage = window.localStorage.getItem("companyid");
 
     // const { id } = useParams();
@@ -17,6 +17,10 @@ function ProfilePage() {
     if (data) {
         console.log(data);
         console.log(data.company_page_by_pk.company_name);
+        console.log(data.company_page_by_pk.company_details);
+        console.log(data.company_page_by_pk.company_size_name);
+        console.log(data.company_page_by_pk.company_locations[0].location.name);
+
         console.log("minteee")
     }
 
@@ -26,26 +30,23 @@ function ProfilePage() {
                 <div className="grid items-center">
                     <div className="flex flex-col items-center pb-10 ">
                         <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
-                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
+                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{data ? data.company_page_by_pk.user_account.first_name: "nouser"} {data ? data.company_page_by_pk.user_account.last_name: "nouser"}</h5>
                         <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
                     </div>
                 </div>
                 <div className=" mx-20 justify-center my-14 col-span-2">
-                    <div className="block rounded-lg shadow-lg bg-white text-center h-full bg-gradient-to-r from-sky-800 to-pink-800 grid grid-rows-8">
+                    <div className="block rounded-lg shadow-lg bg-white text-center h-full bg-gray-200 grid grid-rows-8">
                         <div className="row-span-2 flex-col">
-                            <h2>12k follow</h2>
-                            <Button
-                                className="h-fit w-fit bg-gray-200 hover:bg-gray-100 text-black"
-                                variant="filled"
-                            >
-                                Follow
-                            </Button>
+
+                            <h5 className="text-black text-xl font-semibold tracking-tight dark:text-white place-self-center">
+                                Followers
+                            </h5><h5 className="text-sky-800 text-xl font-semibold" >12k</h5>
                         </div>
-                        <div className="row-span-6">
+                        <div className="row-span-6 mx-20">
                             <h5 className="text-black text-xl font-semibold tracking-tight dark:text-white place-self-center">
                                 Company Description
                             </h5>
-                            <h2 className="text-white text-l font-semibold tracking-tight dark:text-white place-self-center">
+                            <h2 className="text-sky-800 text-l font-semibold tracking-tight dark:text-white place-self-center">
                                 {data ? data.company_page_by_pk.company_name : "nouser"}
 
                             </h2>
@@ -53,8 +54,29 @@ function ProfilePage() {
                             <h3 className="text-blacl text-xl font-semibold tracking-tight dark:text-white place-self-center">
                                 Who are you?
                             </h3>
-                            <h3 className="text-white text-md font-semibold tracking-tight dark:text-white place-self-center">
-                                {data ? data.company_page_by_pk.company_details: "nouser"}
+                            <h3 className="text-sky-800 text-md font-semibold tracking-tight dark:text-white place-self-center">
+                                {data ? data.company_page_by_pk.company_details : "nouser"}
+                            </h3>
+                            <br />
+                            <h3 className="text-black text-xl font-semibold tracking-tight dark:text-white place-self-center">
+                                Company Size
+                            </h3>
+                            <h3 className="text-sky-800 text-md font-semibold tracking-tight dark:text-white place-self-center">
+                                {data ? data.company_page_by_pk.company_size_name : "nouser"}
+                            </h3>
+                            <br />
+                            <h3 className="text-black text-xl font-semibold tracking-tight dark:text-white place-self-center">
+                               Type of company
+                            </h3>
+                            <h3 className="text-sky-800 text-md font-semibold tracking-tight dark:text-white place-self-center">
+                                {data ? data.company_page_by_pk.company_type_name : "nouser"}
+                            </h3>
+                            <br />
+                            <h3 className="text-black text-xl font-semibold tracking-tight dark:text-white place-self-center" >
+                                Company Locations?
+                            </h3>
+                            <h3 className="text-sky-800 text-md font-semibold tracking-tight dark:text-white place-self-center">
+                                {data ? data.company_page_by_pk.company_locations[0].location.name : "nouser"}
                             </h3>
                         </div>
 
@@ -116,4 +138,4 @@ function ProfilePage() {
     );
 }
 
-export default ProfilePage;
+export default ProfilePageMine;

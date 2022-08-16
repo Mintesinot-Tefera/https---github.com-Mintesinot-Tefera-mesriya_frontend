@@ -30,20 +30,25 @@ const useStyles = makeStyles((theme) => ({
 export default function TenderList() {
   const classes = useStyles();
 
-  const navigate = useNavigate();
-
-  const navigateToTenderDetail = (id) => {
-    navigate(`/tenderdetail/${id}`)
-  };
-
   const { error, loading, data } = useQuery(LOAD_TENDERS);
   const [tenders, setTenders] = useState([]);
-  
+
+
   useEffect(() => {
     if (data) {
       setTenders(data.tenders);
     }
-  }, [data]);
+  });
+
+  const navigate = useNavigate();
+  
+  const navigateToTenderDetail = (id) => {
+    if(data){
+      // console.log(data.tenders)
+    window.localStorage.setItem("tenderid", id);
+    navigate(`/tenderdetail`)
+    }
+  };
 
 
   return (

@@ -29,8 +29,8 @@ export default function NavbarUser() {
     navigate('/viewbids');
     setAnchorEl(null);
   };
-  const navigateToProfilePage= () => {
-    navigate('/profilepage');
+  const navigateToProfilePageMine= () => {
+    navigate('/profilepagemine');
     setAnchorEl(null);
   };
 
@@ -153,7 +153,7 @@ export default function NavbarUser() {
                 >
                   <MenuItem onClick={navigateToViewBids}>ማመልክቻዎቼ</MenuItem>
                   <MenuItem onClick={navigateToViewBids}>ኮንትራቶቼ</MenuItem>
-                  <MenuItem onClick={navigateToProfilePage}>የኔ ገጥ</MenuItem>
+                  <MenuItem onClick={navigateToProfilePageMine}>የኔ ገጥ</MenuItem>
                 </Menu>
 
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}

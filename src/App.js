@@ -14,7 +14,7 @@ import ProfileBuidlerPage1 from "./profile/profilebuilderpage1";
 import ProfileBuidlerPage2 from "./profile/profilebuilderpage2";
 import ProfileBuidlerPage3 from "./profile/profilebuilderpage3";
 import ProfileBuidlerPage4 from "./profile/profilebuilderpage4";
-import TenderDose from "./components/biddingform";
+import TenderDose from "./proposals/biddingform";
 import NavbarPublic from "./components/navbarpublic";
 import Contract from "./components/contract";
 import GeekStepper from "./components/geekstepper";
@@ -27,14 +27,13 @@ import TenderCreatorOpen4 from "./tendercreator/tendercreatoropen4";
 import TenderCreatorClose3 from "./tendercreator/tendercreatorclose3";
 import TenderCreatorClose4 from "./tendercreator/tendercreatorclose4";
 import Messages from "./components/messages"
-import ViewBids from "./components/viewbids";
 import Compliant from "./components/compliant";
 import Blog from "./components/blog";
 import ProfileBuidlerPage from "./profile/profilebuilderpage";
 import ProfileBuilderStepper from "./profile/profilebuilderstepper";
-import ProfilePage from "./profile/profilepage";
+import ProfilePageMine from "./profile/profilepagemine";
 import UserHome from "./userpages/userhomepage";
-import BiddingForm from "./components/biddingform";
+import BiddingForm from "./proposals/biddingform";
 import TenderDetail from "./components/tenderdetail";
 import { setContext } from '@apollo/client/link/context';
 import Notfoundpage from "./not_found/404";
@@ -46,8 +45,9 @@ import {
   from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-
-
+import ProfilePageOthers from "./profile/profilepageothers";
+import ProposalListMine from "./proposals/proposallistmine";
+import ProposalDetail from "./proposals/proposaldetails";
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -85,9 +85,29 @@ const client = new ApolloClient({
 
 
 function App() {
+
+  // const useridfromlocalstorage = window.localStorage.getItem("userid")
+
+  // if (!useridfromlocalstorage) {
+  //   return (<ApolloProvider client={client}>
+  //     <Router>
+  //       <div className="App">
+  //         <NavbarPublic />
+  //         <Routes>
+  //           <Route path="/" element={<LandingPage />} />
+  //           <Route path="/login" element={<SignIn />} />
+  //           <Route path="/register" element={<SignUp />} />
+
+  //         </Routes>
+  //         <FooterPublic />
+  //       </div>
+  //     </Router>
+  //   </ApolloProvider>
+  //   );
+  // }
+
   return (
     <ApolloProvider client={client}>
-
       <Router>
         <div className="App">
           <NavbarUser />
@@ -100,7 +120,7 @@ function App() {
           {/* <Compliant/> */}
           {/* <Blog/> */}
           {/* <ProfileBuilderStepper/> */}
-          {/* <ProfilePage /> */}
+          {/* <ProfilePageMine /> */}
           {/* <UserHome/> */}
           {/* <TenderCreatorStepper /> */}
           {/* <TenderDetail/> */}
@@ -108,7 +128,8 @@ function App() {
           {/* <TenderDose/> */}
           {/* <BiddingForm/> */}
           {/* <LandingPage/> */}
-
+     {/* <ProposalDetail/> */}
+     <ProposalListMine/>
 
           <Routes>
             <Route path="/" element={<LandingPage />} />
@@ -116,12 +137,15 @@ function App() {
             <Route path="/register" element={<SignUp />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/userhome" element={<UserHome />} />
-            <Route path="/viewbids" element={<ViewBids />} />
+            <Route path="/myproposals" element={<ProposalListMine />} />
             <Route path="/tendercreator" element={<TenderCreatorStepper />} />
             <Route path="/messages" element={<Messages />} />
-            <Route path="/tenderdetail/:id" element={<TenderDetail />} />
-            <Route path="/profilepage" element={<ProfilePage />} />
+            <Route path="/tenderdetail" element={<TenderDetail />} />
+            <Route path="/profilepagemine" element={<ProfilePageMine />} />
+            <Route path="/profilepageothers" element={<ProfilePageOthers />} />
             <Route path="/biddingform" element={<BiddingForm />} />
+            <Route path="/proposaldetails" element={<ProposalDetail />} />
+
             <Route path="*" element={<Notfoundpage />} />
           </Routes>
           <FooterUser />

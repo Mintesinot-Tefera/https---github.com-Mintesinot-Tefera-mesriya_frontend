@@ -12,32 +12,27 @@ function UserHomeTop() {
   const navigate = useNavigate();
   // const id = useridfromlocalstorage;
 
-  const navigateToProfilepage = () => {
-    navigate(`/profilepage`);
+  const navigateToProfilePageMine = () => {
+    navigate(`/profilepagemine`);
   };
 
   const { error, loading, data } = useQuery(LOGGED_IN_USER, {
     variables: { id: useridfromlocalstorage }
   });
 
-  if (data) {
-    console.log(data);
-    console.log(data.user_account_by_pk.first_name);
-    console.log(data.user_account_by_pk.company_pages[0].id);
 
-  }
-  // }
-  // // if (error) {
-  // //   // console.error(error);
-  // //   return <div>Error!</div>;
-  // // }
 
   const handleButtonclick = () => {
     if (data) {
       window.localStorage.setItem("companyid", data.user_account_by_pk.company_pages[0].id);
-      navigateToProfilepage();
+      navigateToProfilePageMine();
     }
   }
+
+  // if (data) {
+    // console.log(data);
+    // console.log(data.user_account_by_pk.first_name);
+    // console.log(data.user_account_by_pk.company_pages[0].id);
 
   return (
     <div className="bg-gradient-to-r from-pink-800 to-sky-800 shadow-lg rounded mx-8 mb-4 p-8  md:bg-orange h-35 grid grid-cols-8 ">
@@ -50,7 +45,7 @@ function UserHomeTop() {
         <h5 className="text-xl text-white font-medium leading-tight mb-2">
           <div>
             <h1>
-              {data ? data.user_account_by_pk.first_name : "nouser"}
+              {data ? data.user_account_by_pk.first_name : "no user"}
               {data ? data.user_account_by_pk.last_name : "no user"}
             </h1>
             {/* <h2>{id}</h2> */}

@@ -1,5 +1,19 @@
 import { Button } from "@material-tailwind/react";
+import React, { useState } from "react";
+
 function BiddingForm() {
+  const [proposalBodyText, setProposalBodyText] = useState("");
+  const [proposedtime, setProposedtime] = useState("");
+  const [grade, setGrade] = useState("");
+  const [ftnumber, setFTnumber] = useState();
+  const [cponumber, setCPOnumber] = useState("");
+  const [extras, setExtras] = useState();
+  const [technicalProposalFileLink, setTechnicalProposalFileLink] = useState("");
+  const [proposedAmountofMoney, setProposedAmountofMoney] = useState("");
+  const [financialProposalFileLink, setFinancialProposalFileLink] = useState("");
+  
+  
+
   return (
     <div className="px-20  bg-gray-300">
       <h5 className="text-gray-900 text-xl font-medium pb-2 pt-8 ">የጨረታ መወዳደሪያ ዶሴ</h5>
@@ -12,6 +26,10 @@ function BiddingForm() {
                 rows="4"
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="የስራ መረጃ ዝርዝር"
+                onChange={(e) => {
+                  setProposalBodyText(e.target.value);
+                }
+                }
               ></textarea>
             </div>
           </div>
@@ -24,7 +42,6 @@ function BiddingForm() {
               <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                   <label
-                    for="first_name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     ስራው የሚፈጅብህ ጊዜ
@@ -33,30 +50,37 @@ function BiddingForm() {
                     type="text"
                     id="first_name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="John"
+                    placeholder="ስራው የሚፈጅብህ ጊዜ"
                     required=""
+                    onChange={(e) => {
+                      setProposedtime(e.target.value);
+                    }
+                    }
                   />
                 </div>
                 <div>
                   <label
-                    for="last_name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የእቃ ጥራት
                   </label>
                   <input
                     type="text"
+                    maxLength={1}
                     id="last_name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Doe"
+                    placeholder="የእቃ ጥራት"
                     required=""
+                    onChange={(e) => {
+                      setGrade(e.target.value);
+                    }
+                    }
                   />
                 </div>
               </div>
               <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                   <label
-                    for="first_name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     መወዳደሪያ ክፍያ ባንክ FTnumber
@@ -65,13 +89,16 @@ function BiddingForm() {
                     type="text"
                     id="first_name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="John"
+                    placeholder="FTnumber"
                     required=""
+                    onChange={(e) => {
+                      setFTnumber(e.target.value);
+                    }
+                    }
                   />
                 </div>
                 <div>
                   <label
-                    for="last_name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የስራ ማስያዣ cpo ቁጥር
@@ -80,14 +107,17 @@ function BiddingForm() {
                     type="text"
                     id="last_name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Doe"
+                    placeholder="cpo"
                     required=""
+                    onChange={(e) => {
+                      setCPOnumber(e.target.value);
+                    }
+                    }
                   />
                 </div>
               </div>
               <div className="mb-6">
                 <label
-                  for="last_name"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                 >
                   ማመልከቻ
@@ -96,30 +126,33 @@ function BiddingForm() {
                   id="message"
                   rows="2"
                   className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="የስራ መረጃ ዝርዝር"
+                  placeholder="ማመልከቻ"
+                
                 ></textarea>
               </div>
               <div className="mb-6">
                 <label
-                  for="last_name"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                 >
                   ተጫማሪ
                 </label>
                 <textarea
                   id="message"
-                  rows="2ፍ"
+                  rows="2"
                   className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="የስራ መረጃ ዝርዝር"
+                  placeholder="ተጫማሪ"
+                  onChange={(e) => {
+                    setExtras(e.target.value);
+                  }
+                  }
                 ></textarea>
               </div>
 
               <div className="grid grid-cols-3 mb-8">
                 <label
                   className="block mb-2 text-sm font-medium text-gray-900 "
-                  for="user_avatar"
                 >
-                  የድርጅቱ አርማ
+                  ተጨማሪ ዶክመንቶች
                 </label>
                 <div className="col-span-2 grid grid-cols-2 dark:bg-gray-400 rounded-lg">
                   <input
@@ -128,21 +161,17 @@ function BiddingForm() {
                     id="user_avatar"
                     type="file"
                   />
-                  <div>
-                    <label
-                      for="last_name"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600 "
-                    >
-                      ሊንክ
-                    </label>
-                    <input
-                      type="text"
-                      id="last_name"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Doe"
-                      required=""
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    id="last_name"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="ሊንክ"
+                    required=""
+                    onChange={(e) => {
+                      setTechnicalProposalFileLink(e.target.value);
+                    }
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -151,15 +180,38 @@ function BiddingForm() {
         <div className="block rounded-lg shadow-lg bg-white text-center h-fit justify-center mt-14 pb-8 col-span-2">
           <div className="p-6 h-full">
             <h5 className="text-gray-900 text-xl font-medium mb-2">
-              ተጨማሪ ዝርዝር መረጃ
+              ፋይናንስ መረጃ
             </h5>
+
+            <div className="grid gap-6 mb-6 md:grid-cols-2">
+              <div><label
+                htmlFor="first_name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
+              >
+                ስራው የሚፈጅብህ ገንዘብ
+
+              </label>
+              <input
+                type="text"
+                id="first_name"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="ስራው የሚፈጅብህ ገንዘብ "
+                required=""
+                onChange={(e) => {
+                  setProposedAmountofMoney(e.target.value);
+                }
+                }
+              />
+              </div>
+              
+            </div>
 
             <div className="grid grid-cols-3 mb-8">
               <label
                 className="block mb-2 text-sm font-medium text-gray-900 "
-                for="user_avatar"
+                htmlFor="user_avatar"
               >
-                የድርጅቱ አርማ
+                ተጨማሪ ዶክመንቶች
               </label>
               <div className="col-span-2 grid grid-cols-2 dark:bg-gray-400 rounded-lg">
                 <input
@@ -168,142 +220,35 @@ function BiddingForm() {
                   id="user_avatar"
                   type="file"
                 />
-                <div>
-                  <label
-                    for="last_name"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600 "
-                  >
-                    ሊንክ
-                  </label>
-                  <input
-                    type="text"
-                    id="last_name"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Doe"
-                    required=""
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="grid gap-6 mb-6 md:grid-cols-2">
-              <div>
-                <label
-                  for="first_name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
-                >
-                  የድርጅት መስራች
-                </label>
-                <input
-                  type="text"
-                  id="first_name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="John"
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  for="last_name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
-                >
-                  የድርጅት CEO
-                </label>
                 <input
                   type="text"
                   id="last_name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Doe"
+                  placeholder="ሊንክ"
                   required=""
-                />
-              </div>
-            </div>
-
-            <label
-              for="message"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
-            >
-              የድርጅት ገለጻ
-            </label>
-            <div className="grid grid-cols-2 gap-6">
-              <div>
-                <label
-                  for="website"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  facebook
-                </label>
-                <input
-                  type="url"
-                  id="website"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="flowbite.com"
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  for="website"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  linkedin
-                </label>
-                <input
-                  type="url"
-                  id="website"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="flowbite.com"
-                  required=""
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-6">
-              <div>
-                <label
-                  for="website"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  website
-                </label>
-                <input
-                  type="url"
-                  id="website"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="flowbite.com"
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  for="website"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  twitter
-                </label>
-                <input
-                  type="url"
-                  id="website"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="flowbite.com"
-                  required=""
+                  onChange={(e) => {
+                    setFinancialProposalFileLink(e.target.value);
+                  }
+                  }
                 />
               </div>
             </div>
           </div>
+
         </div>
-        <div className="flex mt-10 pr-20 justify-end gap-8">
-        <button
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          አቋርጥ 
-        </button>
-        <button
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          ላክ
-        </button>
+        <div className="flex mr-10 pr-20 justify-end gap-8">
+          <button
+            type="submit"
+            className="text-white my-10 bg-sky-800 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            አቋርጥ
+          </button>
+          <button
+            type="submit"
+            className="text-white my-10 bg-sky-800 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            ላክ
+          </button>
         </div>
       </form>
     </div>

@@ -1,7 +1,45 @@
+import SignIn from "../authentication/signin";
+import SignUp from "../authentication/signup";
+import LandingPage from "../components/landingpage";
 import UserHomeBottom from "./userhomebottom";
 import UserHomeTop from "./userhometop";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+  from,
+} from "@apollo/client";
+import NavbarPublic from "../components/navbarpublic"
+import FooterPublic from "../components/footerpublic";
 
 function UserHomePage() {
+  const useridfromlocalstorage = window.localStorage.getItem("userid")
+
+  // const client = new ApolloClient({
+  //   cache: new InMemoryCache(),
+  //   link: authLink.concat(link),
+  // });
+  
+
+  // if (useridfromlocalstorage) {
+  //   return (<ApolloProvider>
+  //     <Router>
+  //       <div className="App">
+  //         <NavbarPublic />
+  //         <Routes>
+  //           <Route path="userhome/" element={<LandingPage/>} />
+  //           <Route path="/login" element={<SignIn />} />
+  //           <Route path="/register" element={<SignUp />} />
+
+  //         </Routes>
+  //         <FooterPublic />
+  //       </div>
+  //     </Router>
+  //   </ApolloProvider>
+  //   );
+  // }
  
   return (
     <div className="bg-gray-300 pt-8 pb-8">

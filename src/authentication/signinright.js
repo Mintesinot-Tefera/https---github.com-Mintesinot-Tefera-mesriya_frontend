@@ -42,8 +42,11 @@ function SignInRight() {
     loginuser();
     if (data) {
       // console.log(data.user_account[0].user_name);
+      // console.log(data.user_account[0].company_pages[0].id);
+      
       // navigateUserhome(data.user_account[0].id);
       window.localStorage.setItem("userid", data.user_account[0].id);
+      window.localStorage.setItem("companyid", data.user_account[0].company_pages[0].id);
       navigateUserhome();
 
     }

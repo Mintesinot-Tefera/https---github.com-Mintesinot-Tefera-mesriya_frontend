@@ -19,6 +19,10 @@ query user_account($email: String!, $password: String!) {
   user_account(where: {email: {_eq: $email}, password: {_eq: $password}}) {
     id
     user_name
+    company_pages {
+      id
+    }
+
   }
 }
 `
@@ -45,6 +49,10 @@ query user_company_page($id: Int!) {
     socials_linkedIn
     stars_cumulative
     user_id
+    user_account {
+      first_name
+      last_name
+    }
     action
     company_details
     company_size_name
@@ -69,9 +77,6 @@ query user_company_page($id: Int!) {
   }
 }
 `
-
-
-
 export const INSERT_BLOG_POST = gql`
     mutation InsertBlogPost($title: String!, $content: String!) {
         insert_blog_post_one(object: {
@@ -100,14 +105,69 @@ export const LOAD_TENDERS = gql`
 `
 
 export const TENDER_DETAILS = gql`
-  query ($id: String!) {
+  query tender_details($id: Int!) {
     tenders_by_pk(id: $id) {
-      bid_document_price
-      bid_no
-      bidding_hosting_location
-      category
-      closing_date
+      description
+      title
+      updated_at
+      tender_poster_company_id
+      start_date
+      requirements_doc_link
+      procurement_type
+      mode_of_procurement
       created_at
+      closing_date
+      category
+      bidding_hosting_location
+      bid_no
+      bid_document_price
+      company_page {
+        id
+      }
     }
+}
+`
+export const PROPOSALS = gql`
+query{
+  proposal  {
+    Proposal_body_text
+    id
+    proposed_time
+  }
+}
+`
+
+
+
+export const PROPOSALS_OF_LOGGED_IN_USER = gql`
+query proposal_of_loggedin_user( $_eq: Int!) {
+  proposal(where: { proposing_company_id: {_eq: $_eq}}) {
+    Proposal_body_text
+    id
+    proposed_time
+    amount_of_money_proposed
+  }
+}
+`
+
+export const PROPOSAL_DETAILS= gql`
+query proposaldetails($id: Int!) {
+  proposal_by_pk(id: $id) {
+    CPO_number
+    Extra
+    Proposal_body_text
+    amount_of_money_proposed
+    bank_name
+    financial_proposal_file_link
+    grade
+    id
+    other_file_link
+    proposed_time
+    proposing_company_id
+    status
+    technical_proposal_file_link
+    tender_fee_FT_number
+    tender_id
+  }
 }
 `
