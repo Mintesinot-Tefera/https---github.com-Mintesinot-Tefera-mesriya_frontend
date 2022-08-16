@@ -37,6 +37,7 @@ import UserHome from "./userpages/userhomepage";
 import BiddingForm from "./components/biddingform";
 import TenderDetail from "./components/tenderdetail";
 import { setContext } from '@apollo/client/link/context';
+import Notfoundpage from "./not_found/404.js";
 import {
   ApolloClient,
   InMemoryCache,
@@ -121,7 +122,7 @@ function App() {
             <Route path="/tenderdetail/:id" element={<TenderDetail />} />
             <Route path="/profilepage" element={<ProfilePage />} />
             <Route path="/biddingform" element={<BiddingForm />} />
-
+            <Route path="*" element={<Notfoundpage />} />
           </Routes>
           <FooterUser />
         </div>
