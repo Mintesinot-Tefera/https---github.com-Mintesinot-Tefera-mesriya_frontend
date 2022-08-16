@@ -37,7 +37,7 @@ import UserHome from "./userpages/userhomepage";
 import BiddingForm from "./components/biddingform";
 import TenderDetail from "./components/tenderdetail";
 import { setContext } from '@apollo/client/link/context';
-import Notfoundpage from "./not_found/404.js";
+import Notfoundpage from "./not_found/404";
 import {
   ApolloClient,
   InMemoryCache,
