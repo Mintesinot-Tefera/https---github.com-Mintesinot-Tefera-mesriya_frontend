@@ -50,6 +50,7 @@ import ProposalListMine from "./proposals/proposallistmine";
 import ProposalDetail from "./proposals/proposaldetails";
 import TenderListMine from "./tender/tenderlistmine";
 import TenderDetailsMine from "./tender/tenderdetailsmine";
+import admin from "./admin-panel/App";
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -127,7 +128,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<SignIn />} />
             <Route path="/register" element={<SignUp />} />
-            
+            <Route path="/admin" element={<admin />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/userhome" element= {isLoggedIn ? <UserHome /> : <SignIn />} />
             <Route path="/myproposals" element={isLoggedIn ? <ProposalListMine />: <SignIn />} />
