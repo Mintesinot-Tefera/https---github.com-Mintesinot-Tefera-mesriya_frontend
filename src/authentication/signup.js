@@ -26,9 +26,9 @@ export default function SignUp() {
   const [lastNameInput, setLastName] = useState("");
   const [phoneNumberInput, setPhoneNumber] = useState("");
   const [emailInput, setEmail] = useState();
-  const [passwordInput, setPassword] = useState("");
+  const [passwordInput, setPassword] = useState();
   const [usernameInput, setUserName] = useState();
-  const [confirmPasswordInput, setConfirmPassword] = useState("");
+  const [confirmPasswordInput, setConfirmPassword] = useState();
 
   const [add_user, { error }] = useMutation(INSERT_USER_ACCOUNT)
 
@@ -39,8 +39,9 @@ export default function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (passwordInput === confirmPasswordInput) {
-    var x = add_user({
+
+    if (firstNameInput !== "" && lastNameInput !== "" && emailInput !== "" && usernameInput !== "" && passwordInput !== "" && (passwordInput === confirmPasswordInput)) {
+      var x = add_user({
         variables: {
           first_name: firstNameInput,
           last_name: lastNameInput,
@@ -51,23 +52,22 @@ export default function SignUp() {
         }
 
       });
-    console.log(x.data);
+      if (!x) {
+        console.log(x.data);
+        navigateToLogin();
+      }
     }
-
-      // navigateToLogin();
-    
-    // }
-    // else {
-    //   console.log("password doesn't match");
-    // }
-
-    // if (error) {
-    //   console.log(error);
-    
-    // }
-    console.log("hello");
+    // navigateToLogin();
 
   }
+
+  // if (error) {
+  //   console.log(error);
+
+  // }
+  console.log("hello");
+
+
 
   return (
     <div className="grid grid-cols-2 gap-2 justify-items-center bg-gray-100 dark:bg-gray-700" >
@@ -96,7 +96,7 @@ export default function SignUp() {
               }}
               noValidate
               autoComplete="off"
-              onSubmit={handleSubmit} 
+              onSubmit={handleSubmit}
 
             >
               <div>
@@ -247,7 +247,7 @@ export default function SignUp() {
                   type="submit"
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
-                  // onClick={handleSubmit}
+                // onClick={handleSubmit}
                 >
                   Sign Up
                 </Button>
