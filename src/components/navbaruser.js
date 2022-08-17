@@ -140,12 +140,12 @@ export default function NavbarUser() {
             <div className="flex-shrink-0 flex items-center">
               <img
                 className="block lg:hidden h-8 w-auto"
-                src={MyLogo}
+                src={MyLogos}
                 alt="መስሪያ"
               />
               <img
                 className="hidden lg:block h-8 w-auto"
-                src={MyLogos}
+                src={MyLogo}
                 alt="መስሪያ"
               />
             </div>
