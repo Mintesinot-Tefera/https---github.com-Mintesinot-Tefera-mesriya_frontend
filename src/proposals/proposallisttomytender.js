@@ -28,7 +28,7 @@ function ProposalListToMyTender() {
 
             console.log("hashuka")
             // console.log(data)
-            // setProposals(data.proposal);
+            setProposals(data.proposal);
             // console.log(proposal)
         }
     }, [data]);

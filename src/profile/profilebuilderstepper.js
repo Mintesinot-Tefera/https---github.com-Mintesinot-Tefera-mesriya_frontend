@@ -101,9 +101,9 @@ export default function ProfileBuilderStepper() {
     };
 
     return (
-        <div className="mx-20 justify-center my-2" >
+        <div className="sm:px-10 lg:px-20  bg-gray-300 h-fit lg:h-screen xl:h-screen pt-8 pb-32" >
 
-            <div sx={{ width: '100%' }} className="block bg-white text-center h-fit grid grid-cols-3 bg-gray-300">
+            <div sx={{ width: '100%' }} className="block rounded-lg shadow-lg bg-white text-center h-full divide-x-2 border-2 grid grid-cols-3">
                 <div className="grid grid-rows-3">
                     <div className="flex flex-row items-center pb-10  gap-x-6">
                         <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
@@ -154,7 +154,7 @@ export default function ProfileBuilderStepper() {
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
-                        <div className="block rounded-lg shadow-lg bg-white text-center h-fit border-2 col-span-2">
+                        <div className="block rounded-lg shadow-lg bg-white text-center border-2 col-span-2">
                             <Typography sx={{ mt: 2, mb: 1 }}>
                                 {getStepContent(activeStep)}
                             </Typography>

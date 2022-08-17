@@ -1,8 +1,8 @@
 import { Button } from "@material-tailwind/react";
 import React, { useState } from "react";
-import { INSERT_PROPOSAL } from "../GraphQL/Queries";
+import { INSERT_PROPOSAL } from "../GraphQL/Mutations";
 import { useMutation } from "@apollo/client";
-
+import { useNavigate } from "react-router-dom";
 
 function BiddingForm() {
 
@@ -25,6 +25,11 @@ function BiddingForm() {
 
   const [insert_proposal, { error }] = useMutation(INSERT_PROPOSAL)
 
+  const navigate = useNavigate();
+
+  const navigateToUserHome = () => {
+    navigate(`/userhome`);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,8 +50,9 @@ function BiddingForm() {
         technical_proposal_file_link: technicalProposalFileLink
       }
     });
-    console.log(x.data);
-  }
+    if(x){
+      navigateToUserHome()
+    } }
 
 
   return (
@@ -221,7 +227,6 @@ function BiddingForm() {
             <div className="grid gap-6 mb-6 md:grid-cols-2">
               <div>
                 <label
-                htmlFor="first_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
               >
                 ስራው የሚፈጅብህ ገንዘብ
@@ -241,7 +246,6 @@ function BiddingForm() {
               </div>
               <div>
                 <label
-                htmlFor="first_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
               >
                 Bank name
@@ -265,7 +269,6 @@ function BiddingForm() {
             <div className="grid grid-cols-3 mb-8">
               <label
                 className="block mb-2 text-sm font-medium text-gray-900 "
-                htmlFor="user_avatar"
               >
                 ተጨማሪ ዶክመንቶች
               </label>
@@ -292,7 +295,6 @@ function BiddingForm() {
             <div className="grid gap-6 mb-6 md:grid-cols-2">
               <div>
                 <label
-                htmlFor="first_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
               >
                 other link

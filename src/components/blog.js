@@ -14,7 +14,6 @@ function Blog() {
                             <div className="grid gap-6 mb-6 md:grid-cols-2">
                                 <div>
                                     <label
-                                        for="first_name"
                                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                                     >
                                         ርእስ
@@ -29,7 +28,6 @@ function Blog() {
                                 </div>
                                 <div>
                                     <label
-                                        for="last_name"
                                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                                     >
                                         አይነት
@@ -46,7 +44,6 @@ function Blog() {
                             </div>
                             <div className="mb-6">
                                 <label
-                                    for="message"
                                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                                 >
                                     ጽሁፍ

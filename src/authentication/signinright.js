@@ -20,9 +20,9 @@ import { useNavigate } from "react-router-dom";
 function SignInRight() {
   const navigate = useNavigate();
 
-  // const navigateUserhome = (id) => {
-  //   navigate(`/userhome/${id}`)
-  // };
+  const navigateToSignup = (id) => {
+    navigate(`/register`)
+  };
 
   const navigateUserhome = () => {
     navigate(`/userhome`)
@@ -35,19 +35,24 @@ function SignInRight() {
     variables: { email: emailInput, password: passwordInput }
   });
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     loginuser();
     if (data) {
       // console.log(data.user_account[0].user_name);
       // console.log(data.user_account[0].company_pages[0].id);
-
       // navigateUserhome(data.user_account[0].id);
-      window.localStorage.setItem("userid", data.user_account[0].id);
-      window.localStorage.setItem("companyid", data.user_account[0].company_pages[0].id);
+      if (data.user_account[0].company_pages[0]) {
+        window.localStorage.setItem("companyid", data.user_account[0].company_pages[0].id);
+        window.localStorage.setItem("userid", data.user_account[0].id);
+      }
+      else{
+        window.localStorage.setItem("userid", data.user_account[0].id);
+        window.localStorage.setItem("companyid", null);
+
+      }
       navigateUserhome();
+
 
     }
 
@@ -135,7 +140,7 @@ function SignInRight() {
             </div>
             <div>
               <Link
-                to="/register"
+                onClick={navigateToSignup}
                 variant="body2" fontSize={17}>
                 {"Don't have an account? Sign Up"}
               </Link>

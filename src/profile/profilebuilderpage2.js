@@ -10,7 +10,6 @@ function ProfileBuilderPage2() {
             <form>
               <div className="mb-4">
                 <label
-                  for="message"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                 >
                   የድርጅቱ ራዕይ
@@ -25,7 +24,6 @@ function ProfileBuilderPage2() {
 
               <div className="mb-4">
                 <label
-                  for="message"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                 >
                   የድርጅቱ እቅድ
@@ -39,7 +37,6 @@ function ProfileBuilderPage2() {
               </div>
               <div className="">
                 <label
-                  for="message"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                 >
                   የድርጅቱ ታሪክ

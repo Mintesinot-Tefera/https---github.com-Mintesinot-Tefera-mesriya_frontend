@@ -7,7 +7,6 @@ function SignInRight1() {
         </h5>
         <div>
           <label
-            for="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Your email
@@ -23,7 +22,6 @@ function SignInRight1() {
         </div>
         <div>
           <label
-            for="password"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Your password
@@ -49,7 +47,6 @@ function SignInRight1() {
               />
             </div>
             <label
-              for="remember"
               className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Remember me

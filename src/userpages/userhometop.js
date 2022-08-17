@@ -24,6 +24,7 @@ function UserHomeTop() {
 
   const handleButtonclick = () => {
     if (data) {
+      
       window.localStorage.setItem("companyid", data.user_account_by_pk.company_pages[0].id);
       navigateToProfilePageMine();
     }

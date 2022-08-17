@@ -12,7 +12,6 @@ function ProfileBuilderPage1() {
               <div className="grid gap-x-6 gap-y-2 mb-4 md:grid-cols-2">
                 <div>
                   <label
-                    for="first_name"
                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የድርጅት ስም
@@ -27,7 +26,6 @@ function ProfileBuilderPage1() {
                 </div>
                 <div>
                   <label
-                    for="last_name"
                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የድርጅት አይነት
@@ -42,7 +40,6 @@ function ProfileBuilderPage1() {
                 </div>
                 <div>
                   <label
-                    for="company"
                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የተቀጣሪ ብዛት
@@ -57,7 +54,6 @@ function ProfileBuilderPage1() {
                 </div>
                 <div>
                   <label
-                    for="company"
                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     መገኛ ቦታዎች
@@ -73,7 +69,6 @@ function ProfileBuilderPage1() {
               </div>
               <div className="mb-4">
                 <label
-                  for="message"
                   className="block mb-1 text-sm font-medium text-gray-900 dark:text-black-600"
                 >
                   የድርጅት ገለጻ
@@ -88,7 +83,6 @@ function ProfileBuilderPage1() {
               <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                   <label
-                    for="first_name"
                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     ተዛማጅ ድርጅቶች
@@ -103,7 +97,6 @@ function ProfileBuilderPage1() {
                 </div>
                 <div>
                   <label
-                    for="last_name"
                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የሥራ ዘርፎች

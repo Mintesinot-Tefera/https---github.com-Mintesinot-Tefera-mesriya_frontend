@@ -11,7 +11,6 @@ function TenderCreatorClose4() {
                     <form className='grid grid-cols-8'>
                         <div className="mb-6 col-span-7">
                             <label
-                                for="message"
                                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                             >
                                 የድርጅቱ ራዕይ

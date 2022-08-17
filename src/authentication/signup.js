@@ -52,20 +52,15 @@ export default function SignUp() {
         }
 
       });
-      if (!x) {
-        console.log(x.data);
+      if (x) {
+        // console.log(x.data);
+
+        window.localStorage.setItem("companyid", null);
         navigateToLogin();
       }
     }
-    // navigateToLogin();
 
   }
-
-  // if (error) {
-  //   console.log(error);
-
-  // }
-  console.log("hello");
 
 
 
@@ -251,6 +246,14 @@ export default function SignUp() {
                 >
                   Sign Up
                 </Button>
+
+                <div>
+                  <Link
+                    onClick={navigateToLogin}
+                    variant="body2" fontSize={17}>
+                    {"Already have an account? Sign In"}
+                  </Link>
+                </div>
               </div>
             </Box>
           </Box>

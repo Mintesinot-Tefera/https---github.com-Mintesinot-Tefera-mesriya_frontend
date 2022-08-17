@@ -50,6 +50,9 @@ import ProposalListMine from "./proposals/proposallistmine";
 import ProposalDetail from "./proposals/proposaldetails";
 import TenderListMine from "./tender/tenderlistmine";
 import TenderDetailsMine from "./tender/tenderdetailsmine";
+import ProfileBuilderAllinOne from "./profile/profilebuidlerallinone";
+import TenderCreatorAllinOne from "./tendercreator/tendercreatorallinone";
+import ProposalListToMyTender from "./proposals/proposallisttomytender";
 import admin from "./admin-panel/App";
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
@@ -111,9 +114,10 @@ function App() {
           {/* <ViewBids/> */}
           {/* <Compliant/> */}
           {/* <Blog/> */}
-          {/* <ProfileBuilderStepper/> */}
+          {/* <ProfileBuilderAllinOne/> */}
           {/* <ProfilePageMine /> */}
           {/* <UserHome/> */}
+          {/* <TenderCreatorAllinOne/> */}
           {/* <TenderCreatorStepper /> */}
           {/* <TenderDetail/> */}
           {/* <Contract/> */}
@@ -124,6 +128,9 @@ function App() {
           {/* <TenderListMine/> */}
           {/* <ProposalListMine/> */}
 
+        
+
+
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<SignIn />} />
@@ -132,7 +139,7 @@ function App() {
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/userhome" element= {isLoggedIn ? <UserHome /> : <SignIn />} />
             <Route path="/myproposals" element={isLoggedIn ? <ProposalListMine />: <SignIn />} />
-            <Route path="/tendercreator" element={isLoggedIn ? <TenderCreatorStepper />: <SignIn/>} />
+            <Route path="/tendercreator" element={isLoggedIn ? <TenderCreatorAllinOne />: <SignIn/>} />
             <Route path="/messages" element={isLoggedIn ? <Messages />: <SignIn/>} />
             <Route path="/tenderdetail" element={isLoggedIn ? <TenderDetail />: <SignIn/>} />
             <Route path="/profilepagemine" element={isLoggedIn ? <ProfilePageMine />: <SignIn/>} />
@@ -142,8 +149,12 @@ function App() {
             <Route path="/insertproposal" element={isLoggedIn ? <BiddingForm /> : <SignIn/>} />
             <Route path="/mytenders" element={isLoggedIn ? <TenderListMine /> : <SignIn/>} />
             <Route path="/mytendersdetail" element={isLoggedIn ? <TenderDetailsMine /> : <SignIn/>} />
+            <Route path="/profilebuilder" element={isLoggedIn ? <ProfileBuilderAllinOne /> : <SignIn/>} />
+            <Route path="/appliedproposals" element={isLoggedIn ? <ProposalListToMyTender /> : <SignIn/>} />
+
             
-                        <Route path="*" element={<Notfoundpage />} />
+            
+            <Route path="*" element={<Notfoundpage />} />
           </Routes>
           {isLoggedIn ? <FooterUser /> : <FooterPublic />}
 

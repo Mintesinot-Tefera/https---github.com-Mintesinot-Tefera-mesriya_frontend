@@ -12,7 +12,6 @@ function TenderCreatorOpen4() {
                     <form>
                         <div className="mb-6">
                             <label
-                                for="message"
                                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                             >
                                 የድርጅቱ ራዕይ
@@ -26,7 +25,6 @@ function TenderCreatorOpen4() {
                         </div>
                         <div>
                             <label
-                                for="first_name"
                                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                             >
                                 የድርጅት ስም

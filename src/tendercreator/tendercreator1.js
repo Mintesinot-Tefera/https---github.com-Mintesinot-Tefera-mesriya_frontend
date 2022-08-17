@@ -13,7 +13,6 @@ function TenderCreator1() {
                     <form className="grid grid-rows-4 gap-6">
                         <div>
                             <label
-                                for="first_name"
                                 className="block text-md font-medium text-gray-900 dark:text-black-600 "
                             >
                                 የድርጅት ስም
@@ -28,7 +27,6 @@ function TenderCreator1() {
                         </div>
                         <div>
                             <label
-                                for="first_name"
                                 className="block text-md font-medium text-gray-900 dark:text-black-600"
                             >
                                 የድርጅት ስም
@@ -43,7 +41,6 @@ function TenderCreator1() {
                         </div>
                         <div>
                             <label
-                                for="first_name"
                                 className="block mb-2 text-md font-medium text-gray-900 dark:text-black-600"
                             >
                                 የድርጅት ስም
@@ -58,7 +55,6 @@ function TenderCreator1() {
                         </div>
                         <div>
                             <label
-                                for="first_name"
                                 className="block mb-2 text-md font-medium text-gray-900 dark:text-black-600"
                             >
                                 የድርጅት ስም

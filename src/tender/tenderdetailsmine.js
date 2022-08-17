@@ -13,6 +13,10 @@ function TenderDetailsMine() {
 
   const navigate = useNavigate();
 
+  const navigateToProposalListToMyTender = () => {
+    navigate(`/appliedproposals`);
+  };
+
   return (
     <div>
       <div className="px-20 justify-center py-14 bg-gray-300">
@@ -66,6 +70,13 @@ function TenderDetailsMine() {
             variant="filled"
           >
             አጋራ
+          </Button>
+          <Button
+            className="bg-sky-800 text-white col-end-9"
+            variant="filled"
+            onClick={navigateToProposalListToMyTender}
+          >
+            Submitted Proposals
           </Button>
         </div>
       </div>

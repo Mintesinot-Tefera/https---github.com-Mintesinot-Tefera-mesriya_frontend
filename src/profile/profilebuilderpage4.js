@@ -4,15 +4,14 @@ function ProfileBuilderPage4() {
     <div>
       <div className=" mx-5 justify-center mt-5 ">
           <div className="p-6 h-full">
-            <h5 className="text-gray-900 text-xl font-medium mb-2">
+            {/* <h5 className="text-gray-900 text-xl font-medium mb-2">
             የድርጅት ድረ ገጽ መፍጠሪያ ቅጽ
             </h5>
 
-            <form>
+            <form> */}
             <div className="grid grid-cols-3 mb-8">
                 <label
                   className="block mb-2 text-sm font-medium text-gray-900 "
-                  for="user_avatar"
                 >
                   የድርጅቱ አርማ
                 </label>
@@ -25,7 +24,6 @@ function ProfileBuilderPage4() {
                   />
                   <div>
                     <label
-                      for="last_name"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600 "
                     >
                       ሊንክ
@@ -45,7 +43,6 @@ function ProfileBuilderPage4() {
                 
                 <div>
                   <label
-                    for="first_name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የድርጅት መስራች
@@ -60,7 +57,6 @@ function ProfileBuilderPage4() {
                 </div>
                 <div>
                   <label
-                    for="last_name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የድርጅት CEO
@@ -76,7 +72,6 @@ function ProfileBuilderPage4() {
               </div>
 
               <label
-                for="message"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
               >
                 የድርጅት ገለጻ
@@ -84,7 +79,6 @@ function ProfileBuilderPage4() {
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <label
-                    for="website"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >
                     facebook
@@ -99,7 +93,6 @@ function ProfileBuilderPage4() {
                 </div>
                 <div>
                   <label
-                    for="website"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >
                     linkedin
@@ -116,7 +109,6 @@ function ProfileBuilderPage4() {
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <label
-                    for="website"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >
                     website
@@ -131,7 +123,6 @@ function ProfileBuilderPage4() {
                 </div>
                 <div>
                   <label
-                    for="website"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >
                     twitter
@@ -146,7 +137,7 @@ function ProfileBuilderPage4() {
                 </div>
               </div>
 
-            </form>
+            {/* </form> */}
           </div>
         </div>
       </div>

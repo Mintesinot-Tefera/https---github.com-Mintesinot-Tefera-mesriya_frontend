@@ -16,7 +16,6 @@ function ProfileBuilderPage() {
               <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                   <label
-                    for="first_name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የድርጅት ስም
@@ -31,7 +30,6 @@ function ProfileBuilderPage() {
                 </div>
                 <div>
                   <label
-                    for="last_name"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የድርጅት አይነት
@@ -46,7 +44,6 @@ function ProfileBuilderPage() {
                 </div>
                 <div>
                   <label
-                    for="company"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     የተቀጣሪ ብዛት
@@ -61,7 +58,6 @@ function ProfileBuilderPage() {
                 </div>
                 <div>
                   <label
-                    for="company"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                   >
                     መገኛ ቦታዎች
@@ -77,7 +73,6 @@ function ProfileBuilderPage() {
               </div>
               <div className="mb-6">
                 <label
-                  for="message"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
                 >
                   የድርጅት ገለጻ
@@ -91,7 +86,6 @@ function ProfileBuilderPage() {
               </div>
               <div>
                 <label
-                  for="website"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Website URL
@@ -106,7 +100,6 @@ function ProfileBuilderPage() {
               </div>
               <div className="mb-6">
                 <label
-                  for="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Email address
@@ -131,7 +124,6 @@ function ProfileBuilderPage() {
                   />
                 </div>
                 <label
-                  for="remember"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-400"
                 >
                   I agree with the{" "}
