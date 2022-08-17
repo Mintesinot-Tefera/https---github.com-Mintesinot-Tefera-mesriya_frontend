@@ -1,5 +1,9 @@
 import SignInSide from "../authentication/signin";
 import LandingPage from "./landingpage";
+import { Link } from 'react-router-dom';
+import MyLogo from '../img/logo.png';
+import MyLogos from '../img/logo2.png';
+
 
 function NavbarPublic() {
   return (
@@ -66,12 +70,12 @@ function NavbarPublic() {
             <div className="flex-shrink-0 flex items-center">
               <img
                 className="block lg:hidden h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                src={MyLogos}
                 alt="Workflow"
               ></img>
               <img
                 className="hidden lg:block h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                src={MyLogo}
                 alt="Workflow"
               ></img>
             </div>
@@ -108,12 +112,12 @@ function NavbarPublic() {
                   ስለእኛ
                 </a>
 
-                <a
-                  href="/register"
+                <Link
+                  to="/register"
                   className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
                 >
                   ተመዝገብ
-                </a>
+                </Link>
 
                 <a
                   href="/login"
@@ -201,12 +205,12 @@ function NavbarPublic() {
             ስለእኛ
           </a>
 
-          <a
-            href="#"
+          <Link
+            to="/register"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             ተመዝገብ
-          </a>
+          </Link>
 
           <a
             href="#"

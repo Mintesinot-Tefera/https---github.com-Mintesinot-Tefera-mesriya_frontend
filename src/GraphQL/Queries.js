@@ -150,6 +150,16 @@ query proposal_of_loggedin_user( $_eq: Int!) {
 }
 `
 
+export const PROPOSALS_OF_LOGGED_IN_USER_AND_SELECTED_TENDER = gql`
+query proposal_of_loggedin_user( $_eq: Int!, $_eq1: Int!) {
+  proposal(where: { tender_id: {_eq: $_eq}, proposing_company_id: {_eq: $_eq1}}) {
+    Proposal_body_text
+    id
+    proposed_time
+    amount_of_money_proposed
+  }
+}
+`
 export const PROPOSAL_DETAILS= gql`
 query proposaldetails($id: Int!) {
   proposal_by_pk(id: $id) {
@@ -168,6 +178,79 @@ query proposaldetails($id: Int!) {
     technical_proposal_file_link
     tender_fee_FT_number
     tender_id
+  }
+}
+`
+export const TENDERS_OF_LOGGED_IN_USER= gql`
+query MyQuery2($_eq: Int = 10) {
+  tenders(where: {tender_poster_company_id: {_eq: $_eq}}) {
+    bid_document_price
+    bid_no
+    bidding_hosting_location
+    category
+    closing_date
+    created_at
+    description
+    extended_to
+    extension_reason
+    id
+    mode_of_procurement
+    procurement_type
+    requirements_doc_link
+    start_date
+    status
+    tender_poster_company_id
+    title
+    updated_at
+  }
+}
+`
+
+export const INSERT_PROPOSAL= gql`
+mutation insert_proposal(
+  $CPO_number: String!, 
+  $Extra: String!,
+  $Proposal_body_text: String!, 
+  $amount_of_money_proposed: money!, 
+  $financial_proposal_file_link: String!, 
+  $grade: bpchar!, 
+  $proposed_time: timestamp!, 
+  $proposing_company_id: Int!, 
+  $tender_fee_FT_number: String!, 
+  $tender_id: Int!,
+  $other_file_link: String!,
+  $bank_name: String!,
+  $technical_proposal_file_link:String!
+  ) {
+  insert_proposal(objects: {CPO_number: $CPO_number, 
+    Extra: $Extra, 
+    Proposal_body_text: $Proposal_body_text, 
+    amount_of_money_proposed: $amount_of_money_proposed, 
+    financial_proposal_file_link: $financial_proposal_file_link, 
+    grade: $grade, 
+    proposed_time: $proposed_time, 
+    proposing_company_id: $proposing_company_id, 
+    tender_fee_FT_number: $tender_fee_FT_number, 
+    tender_id: $tender_id, 
+    other_file_link: $other_file_link, 
+    bank_name: $bank_name, 
+    technical_proposal_file_link: $technical_proposal_file_link}
+    ) {
+    returning {
+      CPO_number
+      Extra
+      Proposal_body_text
+      amount_of_money_proposed
+      bank_name
+      financial_proposal_file_link
+      grade
+      id
+      proposed_time
+      proposing_company_id
+      technical_proposal_file_link
+      tender_fee_FT_number
+      tender_id
+    }
   }
 }
 `

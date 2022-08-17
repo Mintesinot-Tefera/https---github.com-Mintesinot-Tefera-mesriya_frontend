@@ -1,18 +1,53 @@
 import { Button } from "@material-tailwind/react";
 import React, { useState } from "react";
+import { INSERT_PROPOSAL } from "../GraphQL/Queries";
+import { useMutation } from "@apollo/client";
+
 
 function BiddingForm() {
+
+  const companyidfromlocalstorage = window.localStorage.getItem("companyid");
+  const tenderidfromlocalstorage = window.localStorage.getItem("tenderid");
+
   const [proposalBodyText, setProposalBodyText] = useState("");
   const [proposedtime, setProposedtime] = useState("");
   const [grade, setGrade] = useState("");
   const [ftnumber, setFTnumber] = useState();
   const [cponumber, setCPOnumber] = useState("");
-  const [extras, setExtras] = useState();
-  const [technicalProposalFileLink, setTechnicalProposalFileLink] = useState("");
+  const [extras, setExtras] = useState("");
+  const [otherFileLink, setOtherFileLink] = useState("");
   const [proposedAmountofMoney, setProposedAmountofMoney] = useState("");
   const [financialProposalFileLink, setFinancialProposalFileLink] = useState("");
+  const [bankname, setBankName] = useState("");
+  const [technicalProposalFileLink, setTechnicalProposalFileLink ] = useState("");
+
   
-  
+
+  const [insert_proposal, { error }] = useMutation(INSERT_PROPOSAL)
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    var x = insert_proposal({
+      variables: {
+        CPO_number: cponumber,
+        Extra: extras,
+        Proposal_body_text: proposalBodyText,
+        amount_of_money_proposed: proposedAmountofMoney,
+        financial_proposal_file_link: financialProposalFileLink,
+        grade: grade,
+        proposing_company_id: companyidfromlocalstorage,
+        other_file_link: otherFileLink,
+        tender_fee_FT_number: ftnumber,
+        tender_id: tenderidfromlocalstorage,
+        proposed_time: proposedtime,
+        bank_name:bankname,
+        technical_proposal_file_link: technicalProposalFileLink
+      }
+    });
+    console.log(x.data);
+  }
+
 
   return (
     <div className="px-20  bg-gray-300">
@@ -52,10 +87,10 @@ function BiddingForm() {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="ስራው የሚፈጅብህ ጊዜ"
                     required=""
-                    onChange={(e) => {
-                      setProposedtime(e.target.value);
-                    }
-                    }
+                  onChange={(e) => {
+                    setProposedtime(e.target.value);
+                  }
+                  }
                   />
                 </div>
                 <div>
@@ -127,7 +162,7 @@ function BiddingForm() {
                   rows="2"
                   className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="ማመልከቻ"
-                
+
                 ></textarea>
               </div>
               <div className="mb-6">
@@ -184,26 +219,47 @@ function BiddingForm() {
             </h5>
 
             <div className="grid gap-6 mb-6 md:grid-cols-2">
-              <div><label
+              <div>
+                <label
                 htmlFor="first_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
               >
                 ስራው የሚፈጅብህ ገንዘብ
 
               </label>
-              <input
-                type="text"
-                id="first_name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="ስራው የሚፈጅብህ ገንዘብ "
-                required=""
-                onChange={(e) => {
-                  setProposedAmountofMoney(e.target.value);
-                }
-                }
-              />
+                <input
+                  type="text"
+                  id="first_name"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="ስራው የሚፈጅብህ ገንዘብ "
+                  required=""
+                  onChange={(e) => {
+                    setProposedAmountofMoney(e.target.value);
+                  }
+                  }
+                />
               </div>
-              
+              <div>
+                <label
+                htmlFor="first_name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
+              >
+                Bank name
+
+              </label>
+                <input
+                  type="text"
+                  id="first_name"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="ስራው የሚፈጅብህ ገንዘብ "
+                  required=""
+                  onChange={(e) => {
+                    setBankName(e.target.value);
+                  }
+                  }
+                />
+              </div>
+
             </div>
 
             <div className="grid grid-cols-3 mb-8">
@@ -233,6 +289,29 @@ function BiddingForm() {
                 />
               </div>
             </div>
+            <div className="grid gap-6 mb-6 md:grid-cols-2">
+              <div>
+                <label
+                htmlFor="first_name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-600"
+              >
+                other link
+
+              </label>
+                <input
+                  type="text"
+                  id="first_name"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="ስራው የሚፈጅብህ ገንዘብ "
+                  required=""
+                  onChange={(e) => {
+                    setOtherFileLink(e.target.value);
+                  }
+                  }
+                />
+              </div>
+            
+              </div>
           </div>
 
         </div>
@@ -246,6 +325,7 @@ function BiddingForm() {
           <button
             type="submit"
             className="text-white my-10 bg-sky-800 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={ handleSubmit }
           >
             ላክ
           </button>

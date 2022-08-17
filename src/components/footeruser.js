@@ -9,14 +9,14 @@ function FooterUser() {
           <span className="text-sm text-white sm:text-center dark:text-gray-400">
             © 2022{" "}
             <a href="https://flowbite.com/" className="hover:underline">
-              Flowbite™
+              Mesriya™
             </a>
             . All Rights Reserved.
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-900 dark:hover:text-white"
             >
               <svg
                 className="w-5 h-5"
@@ -33,7 +33,7 @@ function FooterUser() {
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-900 dark:hover:text-white"
             >
               <svg
                 className="w-5 h-5"
@@ -50,7 +50,7 @@ function FooterUser() {
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-900 dark:hover:text-white"
             >
               <svg
                 className="w-5 h-5"
@@ -63,7 +63,7 @@ function FooterUser() {
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-900 dark:hover:text-white"
             >
               <svg
                 className="w-5 h-5"
@@ -80,7 +80,7 @@ function FooterUser() {
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              className="text-white hover:text-gray-900 dark:hover:text-white"
             >
               <svg
                 className="w-5 h-5"

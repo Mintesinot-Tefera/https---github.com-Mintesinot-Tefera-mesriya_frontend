@@ -2,8 +2,14 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
+import MyLogo from '../img/logo.png';
+import MyLogos from '../img/logo2.png';
 
 export default function NavbarUser() {
+  const useridfromlocalstorage = window.localStorage.getItem("userid")
+
+
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorE2, setAnchorE2] = React.useState(null);
   const [anchorEpdd, setAnchorEpdd] = React.useState(null);
@@ -16,42 +22,60 @@ export default function NavbarUser() {
     setAnchorE2(event.currentTarget);
   };
 
+  const handleClickProfiledd = (event) => {
+    setAnchorEpdd(event.currentTarget);
+  };
+
   const handleClose1 = () => {
     setAnchorEl(null);
   };
   const handleClose2 = () => {
     setAnchorE2(null);
   };
-  
+
+  const handleCloseProfiledd = () => {
+    setAnchorEpdd(null);
+  };
+
   const navigate = useNavigate();
 
-  const navigateToViewBids= () => {
-    navigate('/viewbids');
+  const navigateToMyProposals = () => {
+    navigate('/myproposals');
     setAnchorEl(null);
   };
-  const navigateToProfilePageMine= () => {
+  const navigateToProfilePageMine = () => {
     navigate('/profilepagemine');
     setAnchorEl(null);
   };
 
-  const navigateToTenderCreator= () => {
+  const navigateToTenderCreator = () => {
     navigate('/tendercreator');
     setAnchorE2(null);
   };
 
+  const navigateToMyTenders = () => {
+    navigate('/mytenders');
+    setAnchorE2(null);
+
+  };
+
+  const handleSignout = () => {
+    window.localStorage.setItem("userid", null)
+    window.localStorage.setItem("companyid", null)
+
+    navigate('/login');
+    setAnchorEpdd(null);
+
+  };
 
   // const navigateToBids= () => {
   //   navigate('/bids');
   // };
 
- 
-  const handleClickProfiledd = (event) => {
-    setAnchorEpdd(event.currentTarget);
-  };
 
-  const handleCloseProfiledd = () => {
-    setAnchorEpdd(null);
-  };
+
+
+
   return (
     // <!-- This example requires Tailwind CSS v2.0+ -->
     <nav className="bg-sky-800">
@@ -116,12 +140,12 @@ export default function NavbarUser() {
             <div className="flex-shrink-0 flex items-center">
               <img
                 className="block lg:hidden h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                src={MyLogo}
                 alt="መስሪያ"
               />
               <img
                 className="hidden lg:block h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                src={MyLogos}
                 alt="መስሪያ"
               />
             </div>
@@ -151,8 +175,8 @@ export default function NavbarUser() {
                   open={Boolean(anchorEl)}
                   onClose={handleClose1}
                 >
-                  <MenuItem onClick={navigateToViewBids}>ማመልክቻዎቼ</MenuItem>
-                  <MenuItem onClick={navigateToViewBids}>ኮንትራቶቼ</MenuItem>
+                  <MenuItem onClick={navigateToMyProposals}>ማመልክቻዎቼ</MenuItem>
+                  <MenuItem onClick={navigateToMyProposals}>ኮንትራቶቼ</MenuItem>
                   <MenuItem onClick={navigateToProfilePageMine}>የኔ ገጥ</MenuItem>
                 </Menu>
 
@@ -173,7 +197,7 @@ export default function NavbarUser() {
                   open={Boolean(anchorE2)}
                   onClose={handleClose2}
                 >
-                  <MenuItem onClick={handleClose2}>የኔ ጨረታዎች</MenuItem>
+                  <MenuItem onClick={navigateToMyTenders}>የኔ ጨረታዎች</MenuItem>
                   <MenuItem onClick={navigateToTenderCreator}>አዲስ ፍጠር</MenuItem>
                   <MenuItem onClick={handleClose2}>ሪፖርት</MenuItem>
                 </Menu>
@@ -246,16 +270,16 @@ export default function NavbarUser() {
                 </button>
               </div>
               <Menu
-                  id="simple-menu-profiledd"
-                  anchorEl={anchorEpdd}
-                  keepMounted
-                  open={Boolean(anchorEpdd)}
-                  onClose={handleCloseProfiledd}
-                >
-                  <MenuItem onClick={handleClickProfiledd}>Your Profile</MenuItem>
-                  <MenuItem onClick={handleClickProfiledd}>Settings</MenuItem>
-                  <MenuItem onClick={handleClickProfiledd}>Sign out</MenuItem>
-                </Menu>
+                id="simple-menu-profiledd"
+                anchorEl={anchorEpdd}
+                keepMounted
+                open={Boolean(anchorEpdd)}
+                onClose={handleCloseProfiledd}
+              >
+                <MenuItem onClick={handleClickProfiledd}>Your Profile</MenuItem>
+                <MenuItem onClick={handleClickProfiledd}>Settings</MenuItem>
+                <MenuItem onClick={handleSignout}>Sign out</MenuItem>
+              </Menu>
 
               {/* <!--
             Dropdown menu, show/hide based on menu state.
@@ -274,8 +298,8 @@ export default function NavbarUser() {
                 aria-labelledby="user-menu-button"
                 tabindex="-1"
               > */}
-                {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
-                {/* <a
+              {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
+              {/* <a
                   href="#"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"

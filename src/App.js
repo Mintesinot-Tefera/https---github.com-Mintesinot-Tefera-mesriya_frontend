@@ -34,7 +34,7 @@ import ProfileBuilderStepper from "./profile/profilebuilderstepper";
 import ProfilePageMine from "./profile/profilepagemine";
 import UserHome from "./userpages/userhomepage";
 import BiddingForm from "./proposals/biddingform";
-import TenderDetail from "./components/tenderdetail";
+import TenderDetail from "./tender/tenderdetail";
 import { setContext } from '@apollo/client/link/context';
 import Notfoundpage from "./not_found/404";
 import {
@@ -48,6 +48,8 @@ import { onError } from "@apollo/client/link/error";
 import ProfilePageOthers from "./profile/profilepageothers";
 import ProposalListMine from "./proposals/proposallistmine";
 import ProposalDetail from "./proposals/proposaldetails";
+import TenderListMine from "./tender/tenderlistmine";
+import TenderDetailsMine from "./tender/tenderdetailsmine";
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -86,31 +88,20 @@ const client = new ApolloClient({
 
 function App() {
 
-  // const useridfromlocalstorage = window.localStorage.getItem("userid")
+  const useridfromlocalstorage = window.localStorage.getItem("userid");
+  console.log(useridfromlocalstorage);
 
-  // if (!useridfromlocalstorage) {
-  //   return (<ApolloProvider client={client}>
-  //     <Router>
-  //       <div className="App">
-  //         <NavbarPublic />
-  //         <Routes>
-  //           <Route path="/" element={<LandingPage />} />
-  //           <Route path="/login" element={<SignIn />} />
-  //           <Route path="/register" element={<SignUp />} />
-
-  //         </Routes>
-  //         <FooterPublic />
-  //       </div>
-  //     </Router>
-  //   </ApolloProvider>
-  //   );
-  // }
+  const isLoggedIn = localStorage.getItem('userid') !== null;
+  console.log(isLoggedIn);
 
   return (
     <ApolloProvider client={client}>
+
       <Router>
         <div className="App">
-          <NavbarUser />
+          {isLoggedIn ? <NavbarUser /> : <NavbarPublic />}
+          {/* <NavbarUser /> */}
+
           {/* <GeekStepper/> */}
           {/* <PostTenderStepper/> */}
           {/* <TenderCreatorOpen3/> */}
@@ -128,27 +119,33 @@ function App() {
           {/* <TenderDose/> */}
           {/* <BiddingForm/> */}
           {/* <LandingPage/> */}
-     {/* <ProposalDetail/> */}
-     <ProposalListMine/>
+          {/* <ProposalDetail/> */}
+          {/* <TenderListMine/> */}
+          {/* <ProposalListMine/> */}
 
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<SignIn />} />
             <Route path="/register" element={<SignUp />} />
+            
             <Route path="/forgotpassword" element={<ForgotPassword />} />
-            <Route path="/userhome" element={<UserHome />} />
-            <Route path="/myproposals" element={<ProposalListMine />} />
-            <Route path="/tendercreator" element={<TenderCreatorStepper />} />
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/tenderdetail" element={<TenderDetail />} />
-            <Route path="/profilepagemine" element={<ProfilePageMine />} />
-            <Route path="/profilepageothers" element={<ProfilePageOthers />} />
-            <Route path="/biddingform" element={<BiddingForm />} />
-            <Route path="/proposaldetails" element={<ProposalDetail />} />
-
-            <Route path="*" element={<Notfoundpage />} />
+            <Route path="/userhome" element= {isLoggedIn ? <UserHome /> : <SignIn />} />
+            <Route path="/myproposals" element={isLoggedIn ? <ProposalListMine />: <SignIn />} />
+            <Route path="/tendercreator" element={isLoggedIn ? <TenderCreatorStepper />: <SignIn/>} />
+            <Route path="/messages" element={isLoggedIn ? <Messages />: <SignIn/>} />
+            <Route path="/tenderdetail" element={isLoggedIn ? <TenderDetail />: <SignIn/>} />
+            <Route path="/profilepagemine" element={isLoggedIn ? <ProfilePageMine />: <SignIn/>} />
+            <Route path="/profilepageothers" element={isLoggedIn ? <ProfilePageOthers />: <SignIn/>} />
+            <Route path="/biddingform" element={isLoggedIn ? <BiddingForm />: <SignIn/>} />
+            <Route path="/proposaldetails" element={isLoggedIn ? <ProposalDetail /> : <SignIn/>} />
+            <Route path="/insertproposal" element={isLoggedIn ? <BiddingForm /> : <SignIn/>} />
+            <Route path="/mytenders" element={isLoggedIn ? <TenderListMine /> : <SignIn/>} />
+            <Route path="/mytendersdetail" element={isLoggedIn ? <TenderDetailsMine /> : <SignIn/>} />
+            
+                        <Route path="*" element={<Notfoundpage />} />
           </Routes>
-          <FooterUser />
+          {isLoggedIn ? <FooterUser /> : <FooterPublic />}
+
         </div>
       </Router>
     </ApolloProvider>

@@ -43,7 +43,7 @@ function SignInRight() {
     if (data) {
       // console.log(data.user_account[0].user_name);
       // console.log(data.user_account[0].company_pages[0].id);
-      
+
       // navigateUserhome(data.user_account[0].id);
       window.localStorage.setItem("userid", data.user_account[0].id);
       window.localStorage.setItem("companyid", data.user_account[0].company_pages[0].id);
@@ -81,64 +81,65 @@ function SignInRight() {
             Sign in
           </Typography>
           <form
-            onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
             noValidate
 
           >
             <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                size="medium"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }
-                }
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                size="medium"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }
-                }
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" size="medium" />}
-                label="Remember me"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign In
-              </Button>
-              <div>
-                <Link href="#" variant="body2" fontSize={17}>
-                  Forgot password?
-                </Link>
-              </div>
-              <div>
-                <Link
-                  to="/register"
-                  variant="body2" fontSize={17}>
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </div>
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              size="medium"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }
+              }
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              size="medium"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }
+              }
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" size="medium" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              onClick={handleSubmit}
+            >
+              Sign In
+            </Button>
+            <div>
+              <Link href="#" variant="body2" fontSize={17}>
+                Forgot password?
+              </Link>
+            </div>
+            <div>
+              <Link
+                to="/register"
+                variant="body2" fontSize={17}>
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </div>
           </form>
         </Box>
       </div>

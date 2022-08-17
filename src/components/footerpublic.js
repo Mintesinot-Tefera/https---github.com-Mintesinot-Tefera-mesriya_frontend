@@ -1,3 +1,6 @@
+import MyLogo from '../img/logo.png';
+import MyLogos from '../img/logo2.png';
+
 function FooterPublic() {
   return (
     <footer className="p-4 bg-sky-800 sm:p-6 dark:bg-gray-800">
@@ -5,9 +8,9 @@ function FooterPublic() {
         <div className="mb-6 md:mb-0">
           <a href="https://flowbite.com/" className="flex items-center">
             <img
-              src="/docs/images/logo.svg"
+              src={MyLogos}
               className="mr-3 h-8 text-white"
-              alt="FlowBite Logo"
+              alt="mesriya Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-white">
               መስሪያ
@@ -81,7 +84,7 @@ function FooterPublic() {
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022{" "}
           <a href="https://flowbite.com/" className="hover:underline">
-            Flowbite™
+            Mesriya™
           </a>
           . All Rights Reserved.
         </span>
