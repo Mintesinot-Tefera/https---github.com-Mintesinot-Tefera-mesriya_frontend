@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useNavigate, Link } from "react-router-dom";
-import home1 from "../landing/pages/Home";
+
 import App from "../landing/pages/App";
 function LandingPage() {
   // const navigate = useNavigate();
@@ -17,7 +17,7 @@ function LandingPage() {
 
   return (
     
-    <><div className="h-screen p-20 bg-gray-300">
+   <div className="h-screen p-20 bg-gray-300">
       <div className="grid grid-cols-2 bg-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 px-5 py-20 h-full">
 
         <div className="flex justify-center items-center gap-20 bg-gray-300">
@@ -35,7 +35,7 @@ function LandingPage() {
           </Link>
         </div>
       </div>
-    </div><App /></>
+    </div>
 
     );
 
