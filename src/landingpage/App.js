@@ -14,11 +14,11 @@ import Rectangle_5 from './assets/Rectangle_5.png';
 function App() {
   const data = {
     hero:{
-      appType: 'Food app',
-      tagLine: 'Why stay hungry when you can order from Bella Onojie',
-      description: 'Download the bella onoje’s food app now on',
-      mainActionText: 'Playstore',
-      extraActionText: 'App Store',
+      appType: 'Mesriya',
+      tagLine: 'Why not Mesriya the fairest and the most transparent way to your Tenders?',
+      description: 'come try our services from now on',
+      mainActionText: 'Mesriya.com',
+      extraActionText: 'Mesriya',
     },
     step1: {
       title: 'Create an account',
@@ -28,24 +28,24 @@ function App() {
       alternate: false,
     },
     step2: {
-      title: 'Explore while shopping',
-      heading: 'Shop for your favorites meal as e dey hot.',
-      description: 'Shop for your favorite meals or drinks and enjoy while doing it.',
+      title: 'Explore Tenders',
+      heading: 'Find your favorites Tenders from anywhere.',
+      description: 'find all tenders at one place and easily while enjoying leasure.',
       img: Rectangle_4,
       alternate: true,
     },
     step3: {
-      title: 'Checkout',
-      heading: "When you're done, check out and get it delivered.",
-      description: "When you're done, check out and get it  delivered with ease.",
+      title: 'Send Proposals',
+      heading: "When you've found the tender you want, just bid !!!",
+      description: "E chereta the future of tenders",
       img: Rectangle_5,
       alternate: false,
     },
     bottomLead: {
-      actionText: 'Download the app now.',
-      description: 'Available on your favourite store. Start your premium experience now.',
-      mainActionText: 'Playstore',
-      extraActionText: 'App Store',
+      actionText: 'Come try us.',
+      description: 'Available on mesriya.com . Start your premium experience now.',
+      mainActionText: 'vist mesriya.com',
+      extraActionText: 'Mesriya',
     },
   }
   return (

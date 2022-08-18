@@ -2,7 +2,7 @@ import React from "react";
 
 import { useNavigate, Link } from "react-router-dom";
 import rectangle_1 from '../assets/Rectangle_1.png';
-import rectangle_2 from '../assets/Rectangle_2.png'; 
+//import rectangle_2 from '../assets/Rectangle_2.png'; 
 
 
 const Hero = ({appType, tagLine, description, mainActionText, extraActionText}) => {
@@ -13,7 +13,7 @@ const Hero = ({appType, tagLine, description, mainActionText, extraActionText}) 
           <p className="p-3 pt-12 text-lg font-bold text-gray-500 lg:text-gray-300">{appType}</p>
         </div>
         <div>
-          <p className="p-2 text-4xl font-bold text-center text-blue-800 lg:mx-auto lg:w-4/6 lg:text-5xl lg:text-gray-100">
+          <p className="p-2 text-4xl font-bold text-center text-blue-800 lg:mx-auto lg:w-4/6 lg:text-5xl lg:text-gray-500">
             {tagLine}
           </p>
         </div>
@@ -52,7 +52,7 @@ const Hero = ({appType, tagLine, description, mainActionText, extraActionText}) 
         
       </div>
       <div className="z-0 flex flex-row items-start justify-center w-screen h-screen pt-20 -mb-16 bg-gray-50 lg:bg-white lg:mb-20 lg:w-full lg:h-96 lg:pt-0">
-          <img className="absolute left-0 lg:left-auto lg:-mt-64" src={rectangle_1} alt=""/><img className="absolute right-0 lg:right-auto lg:ml-24 lg:-mt-16" src={rectangle_2} alt=""/>
+          <img className="absolute left-0 lg:left-auto lg:-mt-64" src={rectangle_1} alt=""/>
         </div>
     </div>
   );
