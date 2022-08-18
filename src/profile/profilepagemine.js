@@ -8,21 +8,21 @@ function ProfilePageMine() {
     const companyidfromlocalstorage = window.localStorage.getItem("companyid");
 
     // const { id } = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const { error, loading, data } = useQuery(LOGGED_IN_USER_COMPANY_PAGE, {
         variables: { id: companyidfromlocalstorage }
     });
 
-    if (data) {
-        console.log(data);
-        console.log(data.company_page_by_pk.company_name);
-        console.log(data.company_page_by_pk.company_details);
-        console.log(data.company_page_by_pk.company_size_name);
-        console.log(data.company_page_by_pk.company_locations[0].location.name);
+    // if (data) {
+    //     console.log(data);
+    //     console.log(data.company_page_by_pk.company_name);
+    //     console.log(data.company_page_by_pk.company_details);
+    //     console.log(data.company_page_by_pk.company_size_name);
+    //     console.log(data.company_page_by_pk.company_locations[0].location.name);
 
-        console.log("minteee")
-    }
+    //     console.log("minteee")
+    // }
 
     return (
         <div className="bg-gray-300">
@@ -75,9 +75,9 @@ function ProfilePageMine() {
                             <h3 className="text-black text-xl font-semibold tracking-tight dark:text-white place-self-center" >
                                 Company Locations?
                             </h3>
-                            <h3 className="text-sky-800 text-md font-semibold tracking-tight dark:text-white place-self-center">
+                            {/* <h3 className="text-sky-800 text-md font-semibold tracking-tight dark:text-white place-self-center">
                                 {data ? data.company_page_by_pk.company_locations[0].location.name : "nouser"}
-                            </h3>
+                            </h3> */}
                         </div>
 
                     </div>

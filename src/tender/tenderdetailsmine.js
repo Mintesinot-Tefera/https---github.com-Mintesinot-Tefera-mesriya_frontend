@@ -14,7 +14,7 @@ function TenderDetailsMine() {
   const navigate = useNavigate();
 
   const navigateToProposalListToMyTender = () => {
-    navigate(`/appliedproposals`);
+    navigate(`/proposalslisttomytender`);
   };
 
   return (

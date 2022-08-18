@@ -8,16 +8,16 @@ function ProfilePageOthers() {
     const tenderpostercompanyidfromlocalstorage = window.localStorage.getItem("tenderpostercompanyid");
 
     // const { id } = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const { error, loading, data } = useQuery(LOGGED_IN_USER_COMPANY_PAGE, {
         variables: { id: tenderpostercompanyidfromlocalstorage }
     });
 
-    if (data) {
-        console.log(data);
-        console.log(data.company_page_by_pk.user_account.first_name);
-    }
+    // if (data) {
+    //     console.log(data);
+    //     console.log(data.company_page_by_pk.user_account.first_name);
+    // }
 
     return (
         <div className="bg-gray-300">

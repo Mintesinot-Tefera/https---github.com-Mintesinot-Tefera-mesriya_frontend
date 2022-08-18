@@ -3,17 +3,24 @@ import MyLogo from '../img/logo.png';
 import MyLogos from '../img/logo.png';
 import Divider from '@material-ui/core/Divider';
 import { INSERT_COMPANY_PAGE } from "../GraphQL/Mutations";
+import { GET_COMPANY_FROM_USER_ACCOUNT } from "../GraphQL/Queries";
 import { useMutation } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+
+
 
 
 function ProfileBuilderAllinOne() {
 
-  const useridfromlocalstorage = window.localStorage.getItem("userid")
+    const useridfromlocalstorage = window.localStorage.getItem("userid")
+    const navigate = useNavigate();
+
 
     const [companynameInput, setCompanynameInput] = useState("");
     const [companydetailInput, setCompanydetailInput] = useState("");
-    const [companytypenameInput, setCompanytypenameInput] = useState(""); 
-    const [companysizenameInput, setCompanysizenameInput] = useState();
+    const [companytypenameInput, setCompanytypenameInput] = useState("");
+    const [companysizenameInput, setCompanysizenameInput] = useState("");
     const [goalsInput, setGoals] = useState("");
     const [missionInput, setMission] = useState("");
     const [socialsfacebook, setSocialFacebook] = useState("");
@@ -21,30 +28,63 @@ function ProfileBuilderAllinOne() {
     const [socialstwitter, setSocialstwitter] = useState("");
     const [action, setAction] = useState("");
 
-    
-  const [insert_company_page, { error }] = useMutation(INSERT_COMPANY_PAGE)
+
+    const [insert_company_page, { error, loading2 }] = useMutation(INSERT_COMPANY_PAGE
+        // ,
+
+        // {
+        //     onCompleted: () => {
+        //         const { error2, loading, data } = useLazyQuery(GET_COMPANY_FROM_USER_ACCOUNT,
+        //             {
+        //                 variables: { id: useridfromlocalstorage }
+        //             });
+
+        //         console.log("runs on success")
+        //     }
+        // }
+    );
+
+    const navigateToUserHome = () => {
+        navigate(`/login`);
+    };
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    var x = insert_company_page({
-      variables: {
-        company_name: companynameInput, 
-        company_details: companydetailInput, 
-        company_type_name: companytypenameInput, 
-        company_size_name: companysizenameInput,
-        mission:missionInput,
-        goals:goalsInput, 
-        socials_facebook: socialsfacebook, 
-        socials_linkedIn: socialslinkedin, 
-        twitter: socialstwitter, 
-        user_id: 50, 
-        action: action
-     }
-    });
-    console.log(x.data);
-  }
- 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        insert_company_page(
+            {
+                variables: {
+                    company_name: companynameInput,
+                    company_details: companydetailInput,
+                    company_type_name: companytypenameInput,
+                    company_size_name: companysizenameInput,
+                    mission: missionInput,
+                    goals: goalsInput,
+                    socials_facebook: socialsfacebook,
+                    socials_linkedIn: socialslinkedin,
+                    twitter: socialstwitter,
+                    user_id: useridfromlocalstorage,
+                    action: action
+                }
+            })
+
+        // if (data) {
+        //     if (data.user_account[0].company_pages[0]) {
+        //         window.localStorage.setItem("companyid", data.user_account[0].company_pages[0].id);
+        //         console.log("if true "+data)
+        //     }
+        //     else {
+        //         console.log("if false "+data)
+
+        //         window.localStorage.setItem("companyid", null);
+
+        //     }
+        // }
+
+        navigateToUserHome();
+    }
+
+
     return (
         <div className="sm:px-10 lg:px-20  bg-gray-300 h-fit pt-8 pb-32" >
             <h5 className="text-sky-800  text-xl font-medium mb-8">
@@ -69,7 +109,6 @@ function ProfileBuilderAllinOne() {
                         <div className="grid gap-x-6 gap-y-2 mb-4 md:grid-cols-2">
                             <div>
                                 <label
-                                    for="first_name"
                                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-black-600"
                                 >
                                     የድርጅት ስም
@@ -82,13 +121,12 @@ function ProfileBuilderAllinOne() {
                                     required=""
                                     onChange={(e) => {
                                         setCompanynameInput(e.target.value);
-                                      }
-                                      }
+                                    }
+                                    }
                                 />
                             </div>
                             <div>
                                 <label
-                                    for="last_name"
                                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-black-600"
                                 >
                                     የድርጅት አይነት
@@ -101,8 +139,8 @@ function ProfileBuilderAllinOne() {
                                     required=""
                                     onChange={(e) => {
                                         setCompanytypenameInput(e.target.value);
-                                      }
-                                      }
+                                    }
+                                    }
                                 />
                             </div>
                             <div>
@@ -119,8 +157,8 @@ function ProfileBuilderAllinOne() {
                                     required=""
                                     onChange={(e) => {
                                         setCompanysizenameInput(e.target.value);
-                                      }
-                                      }
+                                    }
+                                    }
                                 />
                             </div>
                             <div>
@@ -151,8 +189,8 @@ function ProfileBuilderAllinOne() {
                                 placeholder="የድርጅት ገለጻ...(required)"
                                 onChange={(e) => {
                                     setCompanydetailInput(e.target.value);
-                                  }
-                                  }
+                                }
+                                }
                             ></textarea>
                         </div>
                         <div className="grid gap-6 mb-6 md:grid-cols-2">
@@ -184,8 +222,8 @@ function ProfileBuilderAllinOne() {
                                     required=""
                                     onChange={(e) => {
                                         setAction(e.target.value);
-                                      }
-                                      }
+                                    }
+                                    }
                                 />
                             </div>
                         </div>
@@ -198,7 +236,7 @@ function ProfileBuilderAllinOne() {
                             >
                                 የድርጅቱ ራዕይ
                             </label>
-                            
+
                             <textarea
                                 id="message"
                                 rows="3"
@@ -206,8 +244,8 @@ function ProfileBuilderAllinOne() {
                                 placeholder="Your message...  (required)"
                                 onChange={(e) => {
                                     setMission(e.target.value);
-                                  }
-                                  }
+                                }
+                                }
                             ></textarea>
                         </div>
 
@@ -224,8 +262,8 @@ function ProfileBuilderAllinOne() {
                                 placeholder="Your message...   (required)"
                                 onChange={(e) => {
                                     setGoals(e.target.value);
-                                  }
-                                  }
+                                }
+                                }
                             ></textarea>
                         </div>
                         <div className="">
@@ -258,7 +296,7 @@ function ProfileBuilderAllinOne() {
                                     type="file"
                                 />
                                 <div>
-                               
+
                                     <input
                                         type="text"
                                         id="last_name"
@@ -294,16 +332,16 @@ function ProfileBuilderAllinOne() {
                                 id="user_avatar"
                                 type="file"
                             />
-                              <div>
-                               
-                               <input
-                                   type="text"
-                                   id="last_name"
-                                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                   placeholder="link"
-                                   required=""
-                               />
-                           </div>
+                            <div>
+
+                                <input
+                                    type="text"
+                                    id="last_name"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="link"
+                                    required=""
+                                />
+                            </div>
                         </div>
                         {/* ///////////////////////////////////////////////////////////////// */}
                         <Divider />
@@ -322,7 +360,7 @@ function ProfileBuilderAllinOne() {
                                     type="file"
                                 />
                                 <div>
-                                   
+
                                     <input
                                         type="text"
                                         id="last_name"
@@ -386,8 +424,8 @@ function ProfileBuilderAllinOne() {
                                     required=""
                                     onChange={(e) => {
                                         setSocialFacebook(e.target.value);
-                                      }
-                                      }
+                                    }
+                                    }
                                 />
                             </div>
                             <div>
@@ -404,8 +442,8 @@ function ProfileBuilderAllinOne() {
                                     required=""
                                     onChange={(e) => {
                                         setSocialsLinkedin(e.target.value);
-                                      }
-                                      }
+                                    }
+                                    }
                                 />
                             </div>
                         </div>
@@ -438,8 +476,8 @@ function ProfileBuilderAllinOne() {
                                     required=""
                                     onChange={(e) => {
                                         setSocialstwitter(e.target.value);
-                                      }
-                                      }
+                                    }
+                                    }
                                 />
                             </div>
                         </div>

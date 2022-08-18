@@ -5,7 +5,10 @@ import { useQuery, useLazyQuery, gql } from "@apollo/client";
 
 
 function TenderDetail() {
+
   const tenderidfromlocalstorage = window.localStorage.getItem("tenderid");
+  const companyidfromlocalstorage = window.localStorage.getItem("companyid")
+
 
   const { error, loading, data } = useQuery(TENDER_DETAILS, {
     variables: { id: tenderidfromlocalstorage }
@@ -19,10 +22,17 @@ function TenderDetail() {
     navigate('/profilepageothers');
   };
 
-  const navigateToBiddingForm = () => {
-    navigate('/biddingform');
-  };
 
+  const navigateToBiddingForm = () => {
+    if (companyidfromlocalstorage && (companyidfromlocalstorage !== null)) {
+      navigate('/biddingform');
+    }
+      else {
+      navigate('/login');
+        
+      }
+    }
+  
 
   return (
     <div>
@@ -52,50 +62,50 @@ function TenderDetail() {
                 highly vulnerable community members, including pregnant and lactating women, elderly and children, female-headed households,
                 IDPs, and people with disabilities in the Somali Region. */}
               </p><br />
-            <div><strong>Category:  </strong>
-            <p>{data ? data.tenders_by_pk.category : "no tender"}</p>
-            </div><br />
-            <div><strong>Closing Date:  </strong>
-              <p>{data ? data.tenders_by_pk.closing_date : "no tender"}</p>
-            </div><br />
-            <div><strong>Start date: </strong>
-              <p>{data ? data.tenders_by_pk.created_at : "no tender"}</p>
-            </div><br />
-            <div><strong>Bid number: </strong>
-              <p>{data ? data.tenders_by_pk.bid_no : "no tender"}</p>
-            </div><br />
-            <div><strong>Bid document price: </strong>
-              <p>{data ? data.tenders_by_pk.bid_document_price : "no tender"}</p>
+              <div><strong>Category:  </strong>
+                <p>{data ? data.tenders_by_pk.category : "no tender"}</p>
+              </div><br />
+              <div><strong>Closing Date:  </strong>
+                <p>{data ? data.tenders_by_pk.closing_date : "no tender"}</p>
+              </div><br />
+              <div><strong>Start date: </strong>
+                <p>{data ? data.tenders_by_pk.created_at : "no tender"}</p>
+              </div><br />
+              <div><strong>Bid number: </strong>
+                <p>{data ? data.tenders_by_pk.bid_no : "no tender"}</p>
+              </div><br />
+              <div><strong>Bid document price: </strong>
+                <p>{data ? data.tenders_by_pk.bid_document_price : "no tender"}</p>
+              </div>
+
+
             </div>
 
-
+            <div className="flex flex-col space-y-8">
+              <Button
+                className="-fit bg-sky-800 text-white col-end-9"
+                variant="filled"
+                onClick={navigateToBiddingForm}
+              >
+                ማመልከቻ አስገባ
+              </Button>
+              <Button
+                className="bg-sky-800 text-white col-end-9"
+                variant="filled"
+              >
+                አጋራ
+              </Button>
+              <Button
+                className="bg-sky-800 text-white col-end-9"
+                variant="filled"
+                onClick={
+                  navigateToProfilePageOthers}
+              >
+                የድርጅቱ ገጽ ሂድ
+              </Button>
+            </div>
+          </div>
         </div>
-
-        <div className="flex flex-col space-y-8">
-          <Button
-            className="-fit bg-sky-800 text-white col-end-9"
-            variant="filled"
-            onClick={navigateToBiddingForm}
-          >
-            ማመልከቻ አስገባ
-          </Button>
-          <Button
-            className="bg-sky-800 text-white col-end-9"
-            variant="filled"
-          >
-            አጋራ
-          </Button>
-          <Button
-            className="bg-sky-800 text-white col-end-9"
-            variant="filled"
-            onClick={
-              navigateToProfilePageOthers}
-          >
-            የድርጅቱ ገጽ ሂድ
-          </Button>
-        </div>
-      </div>
-      </div>
       </div>
     </div>
   );

@@ -183,3 +183,4 @@ mutation insert_tenders($bid_no: String!,
   }
 }
 `
+

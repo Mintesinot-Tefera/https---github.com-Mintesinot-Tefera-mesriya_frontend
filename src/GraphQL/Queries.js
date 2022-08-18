@@ -151,8 +151,8 @@ query proposal_of_loggedin_user( $_eq: Int!) {
 `
 
 export const PROPOSALS_OF_LOGGED_IN_USER_AND_SELECTED_TENDER = gql`
-query proposal_of_loggedin_user( $_eq: Int!, $_eq1: Int!) {
-  proposal(where: { tender_id: {_eq: $_eq}, proposing_company_id: {_eq: $_eq1}}) {
+query proposal_of_loggedin_user( $_eq: Int!) {
+  proposal(where: { tender_id: {_eq: $_eq}}) {
     Proposal_body_text
     id
     proposed_time
@@ -250,6 +250,16 @@ mutation insert_proposal(
       technical_proposal_file_link
       tender_fee_FT_number
       tender_id
+    }
+  }
+}
+`
+
+export const GET_COMPANY_FROM_USER_ACCOUNT= gql`
+query get_company($_eq: Int!) {
+  user_account(where: {id: {_eq: $_eq}}) {
+    company_pages {
+      id
     }
   }
 }

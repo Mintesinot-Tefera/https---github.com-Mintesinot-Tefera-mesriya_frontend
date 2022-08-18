@@ -2,38 +2,56 @@ import { Button } from "@material-tailwind/react";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useQuery, useLazyQuery, gql } from "@apollo/client";
-import { LOAD_USERS, LOGGED_IN_USER } from "../GraphQL/Queries";
+import { GET_COMPANY_FROM_USER_ACCOUNT, LOGGED_IN_USER } from "../GraphQL/Queries";
 
 function UserHomeTop() {
-  const useridfromlocalstorage = window.localStorage.getItem("userid")
-  // const idFromRoute= useParams().id;
-  // const {id} = idfromlocalstorage ? idfromlocalstorage: idFromRoute;
-  // const id=idfromlocalstorage;s
+  const useridfromlocalstorage = window.localStorage.getItem("userid");
+  const companyidfromlocalstorage = window.localStorage.getItem("companyid")
+
+
   const navigate = useNavigate();
-  // const id = useridfromlocalstorage;
 
   const navigateToProfilePageMine = () => {
     navigate(`/profilepagemine`);
   };
 
-  const { error, loading, data } = useQuery(LOGGED_IN_USER, {
-    variables: { id: useridfromlocalstorage }
-  });
+  const navigateToBuilderPage = () => {
+    navigate(`/profilebuilder`);
+  };
 
+  const { error, loading, data } = useQuery(LOGGED_IN_USER,
+    {
+      variables: { id: useridfromlocalstorage }
+    });
+
+  const { error: errorR, loading: loadingR, data: dataR } = useQuery(GET_COMPANY_FROM_USER_ACCOUNT,
+    {
+      variables: { _eq: useridfromlocalstorage }
+    });
 
 
   const handleButtonclick = () => {
-    if (data) {
-      
-      window.localStorage.setItem("companyid", data.user_account_by_pk.company_pages[0].id);
-      navigateToProfilePageMine();
+
+
+    if (dataR) {
+
+      console.log(dataR.user_account[0].company_pages[0].id)
+      if (dataR.user_account[0].company_pages[0].id) {
+        window.localStorage.setItem("companyid", dataR.user_account[0].company_pages[0].id)
+        navigateToProfilePageMine();
+      }
+      else if (companyidfromlocalstorage && (companyidfromlocalstorage !== null) && (companyidfromlocalstorage !== "null")) {
+        // console.log(data.user_account_by_pk.company_pages[0].id)
+        window.localStorage.setItem("companyid", data.user_account_by_pk.company_pages[0].id)
+        navigateToProfilePageMine();
+      }
+      else {
+        navigateToBuilderPage();
+
+      }
     }
   }
 
-  // if (data) {
-    // console.log(data);
-    // console.log(data.user_account_by_pk.first_name);
-    // console.log(data.user_account_by_pk.company_pages[0].id);
 
   return (
     <div className="bg-gradient-to-r from-pink-800 to-sky-800 shadow-lg rounded mx-8 mb-4 p-8  md:bg-orange h-35 grid grid-cols-8 ">
