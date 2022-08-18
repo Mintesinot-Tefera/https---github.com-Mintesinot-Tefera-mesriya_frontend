@@ -5,7 +5,7 @@ import Step from './components/Step';
 import BottomLead from './components/BottomLead';
 // import Footer from './components/Footer';
 
-import logo from "./assets/logo.png";
+//import logo from "./assets/logo.png";
 import Rectangle_3 from './assets/Rectangle_3.png';
 import Rectangle_4 from './assets/Rectangle_4.png';
 import Rectangle_5 from './assets/Rectangle_5.png';

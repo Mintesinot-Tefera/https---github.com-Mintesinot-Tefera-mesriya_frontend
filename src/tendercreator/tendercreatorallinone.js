@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Divider from '@material-ui/core/Divider';
 import { INSERT_TENDERS } from "../GraphQL/Mutations";
 import { useMutation } from "@apollo/client";
+import tender from "../img/tender.png";
 
 
 
@@ -58,7 +59,7 @@ function TenderCreatorAllinOne() {
             </h5>
             <div sx={{ width: '100%' }} className="block rounded-lg shadow-lg bg-white text-center grid grid-cols-2 divide-x-2 border-2 ">
                 <div>
-
+                <img className="justify-center" src={tender} alt=""/>
                 </div>
                 <div className="mx-12 justify-center mb-8 p-8">
                     <form>
