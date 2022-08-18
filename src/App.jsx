@@ -37,7 +37,6 @@ import BiddingForm from "./proposals/biddingform";
 import TenderDetail from "./tender/tenderdetail";
 import { setContext } from '@apollo/client/link/context';
 
-import Home from "./landing/pages/home";
 import Notfoundpage from "./not_found/404";
 import {
   ApolloClient,
@@ -137,8 +136,9 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<SignIn />} />
             <Route path="/register" element={<SignUp />} />
-            <Route path="/admin" element={<admin />} />
-            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            
+            
+             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/userhome" element= {isLoggedIn ? <UserHome /> : <SignIn />} />
             <Route path="/myproposals" element={isLoggedIn ? <ProposalListMine />: <SignIn />} />
             <Route path="/tendercreator" element={isLoggedIn ? <TenderCreatorAllinOne />: <SignIn/>} />
