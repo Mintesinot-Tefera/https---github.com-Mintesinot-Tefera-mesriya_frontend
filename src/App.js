@@ -53,7 +53,7 @@ import TenderDetailsMine from "./tender/tenderdetailsmine";
 import ProfileBuilderAllinOne from "./profile/profilebuidlerallinone";
 import TenderCreatorAllinOne from "./tendercreator/tendercreatorallinone";
 import ProposalListToMyTender from "./proposals/proposallisttomytender";
-import admin from "./admin-panel/App";
+import App1 from "./admin-panel/App1";
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -135,7 +135,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<SignIn />} />
             <Route path="/register" element={<SignUp />} />
-            <Route path="/admin" element={<admin />} />
+            <Route path="/admin" element={<App1/>} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/userhome" element= {isLoggedIn ? <UserHome /> : <SignIn />} />
             <Route path="/myproposals" element={isLoggedIn ? <ProposalListMine />: <SignIn />} />

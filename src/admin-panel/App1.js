@@ -6,19 +6,20 @@ import Home from './pages/Home';
 import Reports from './pages/Reports';
 import Products from './pages/Products';
 
-function App() {
+function App1() {
   return (
     <>
-      <Router>
+    <div><Navbar/></div>
+      {/* <Router>
         <Navbar />
         <Routes>
           <Route path='/admin' exact component={Home} />
           <Route path='/admin/reports' component={Reports} />
           <Route path='/admin/products' component={Products} />
         </Routes>
-      </Router>
+      </Router> */}
     </>
   );
 }
 
-export default App;
+export default App1;
