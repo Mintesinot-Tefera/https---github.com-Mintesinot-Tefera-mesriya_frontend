@@ -6,7 +6,7 @@ const BottomLead = ({actionText, description, mainActionText, extraActionText}) 
     <div className="flex flex-col justify-center h-screen bg-blue-800 lg:pt-24 lg:pb-14 lg:bg-cover lg:h-full lg:bg-action">
       <p className="p-5 text-5xl font-bold leading-normal text-center text-white lg:text-4xl lg:pt-10">{actionText}</p>
       <p className="pl-12 pr-12 text-xl leading-8 text-center text-gray-300 lg:text-gray-200 lg:font-medium">{description}</p>
-      <div className="flex flex-col flex-wrap items-center justify-between w-full h-48 pt-5 lg:flex-row lg:pt-1">
+      <div className="relative z-50 flex flex-col items-center justify-center h-48 lg:space-x-8 pt-7 lg:pt-0 lg:flex-row lg:justify-between lg:w-90">
         
       <Link
           to="/tenderlistpublic"
