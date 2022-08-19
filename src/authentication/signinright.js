@@ -46,7 +46,7 @@ function SignInRight() {
         window.localStorage.setItem("companyid", data.user_account[0].company_pages[0].id);
         window.localStorage.setItem("userid", data.user_account[0].id);
       }
-      else{
+      else {
         window.localStorage.setItem("userid", data.user_account[0].id);
         window.localStorage.setItem("companyid", null);
 
@@ -66,7 +66,6 @@ function SignInRight() {
 
   }
 
-
   return (
     <div className="m-20">
       <div className="max-w-xl bg-gray-100 rounded-lg border border-gray-200 shadow-md dark:bg-gray-100 dark:border-gray-300">
@@ -79,6 +78,8 @@ function SignInRight() {
             alignItems: "center",
           }}
         >
+    
+
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>

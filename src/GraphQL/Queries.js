@@ -52,6 +52,7 @@ query user_company_page($id: Int!) {
     user_account {
       first_name
       last_name
+      user_name
     }
     action
     company_details
@@ -97,7 +98,6 @@ export const LOAD_TENDERS = gql`
     description
     category
     start_date
-    status
     tender_poster_company_id
     updated_at
   }

@@ -40,7 +40,6 @@ function TenderCreatorAllinOne() {
                 requirements_doc_link: requirementsdoclink,
                 tender_poster_company_id: companyidfromlocalstorage,
                 title: titleInput,
-                status: "approved",
                 closing_date: closingdateInput
             }
         });

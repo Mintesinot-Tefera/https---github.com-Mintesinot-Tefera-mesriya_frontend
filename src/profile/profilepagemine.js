@@ -29,9 +29,9 @@ function ProfilePageMine() {
             <div className="grid grid-cols-3 divider-2 h-screen">
                 <div className="grid items-center">
                     <div className="flex flex-col items-center pb-10 ">
-                        <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
+                        <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="" />
                         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{data ? data.company_page_by_pk.user_account.first_name: "nouser"} {data ? data.company_page_by_pk.user_account.last_name: "nouser"}</h5>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{data ? data.company_page_by_pk.user_account.user_name: "nouser"}</span>
                     </div>
                 </div>
                 <div className=" mx-20 justify-center my-14 col-span-2">
@@ -118,14 +118,14 @@ function ProfilePageMine() {
 
                 <div className="grid grid-cols-2 mt-12 gap-x-40">
                     <div className="flex flex-col items-end pb-10">
-                        <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
-                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
+                        <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="" />
+                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{data ? data.company_page_by_pk.user_account.first_name: "nouser"}</h5>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{data ? data.company_page_by_pk.user_account.user_name: "nouser"}</span>
                     </div>
                     <div className="flex flex-col items-start pb-10">
-                        <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
-                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
+                        <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="" />
+                        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{data ? data.company_page_by_pk.user_account.last_name: "nouser"}</h5>
+                        <span className="text-sm text-gray-500 dark:text-gray-400"></span>
 
                     </div>
                 </div>

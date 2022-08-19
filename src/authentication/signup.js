@@ -16,6 +16,9 @@ import SignInLeft from "./signinleft";
 import { INSERT_USER_ACCOUNT } from "../GraphQL/Mutations";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import { Alert, AlertTitle } from '@material-ui/lab';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -78,9 +81,14 @@ export default function SignUp() {
               alignItems: "center",
             }}
           >
+          
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
+            <Alert severity="info">
+              <AlertTitle>Info</AlertTitle>
+              All fields should be filled — <strong>check it out!</strong>
+            </Alert>
             <Typography component="h1" variant="h5">
               Sign Up
             </Typography>
@@ -242,7 +250,6 @@ export default function SignUp() {
                   type="submit"
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
-                // onClick={handleSubmit}
                 >
                   Sign Up
                 </Button>

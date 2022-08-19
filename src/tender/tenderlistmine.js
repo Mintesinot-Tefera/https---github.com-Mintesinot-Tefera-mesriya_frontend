@@ -96,7 +96,7 @@ export default function TenderListMine() {
                                                 className="mb-4"
                                                 color="textPrimary"
                                             >
-                                                ሙሉ ክፍያ 100000
+                                                 {val.updated_at}
                                             </Typography>
                                             <Typography
                                                 component="span"
@@ -112,7 +112,7 @@ export default function TenderListMine() {
                                                 className="mb-10"
                                                 color="textPrimary"
                                             >
-                                                ከቅኑ 9፡00 ሰአት
+                                                  {val.category}
                                             </Typography>
 
                                         </div>

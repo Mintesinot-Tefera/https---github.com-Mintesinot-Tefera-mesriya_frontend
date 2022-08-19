@@ -12,7 +12,7 @@ function BiddingForm() {
   const [proposalBodyText, setProposalBodyText] = useState("");
   const [proposedtime, setProposedtime] = useState("");
   const [grade, setGrade] = useState("");
-  const [ftnumber, setFTnumber] = useState();
+  const [ftnumber, setFTnumber] = useState("");
   const [cponumber, setCPOnumber] = useState("");
   const [extras, setExtras] = useState("");
   const [otherFileLink, setOtherFileLink] = useState("");

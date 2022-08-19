@@ -55,7 +55,6 @@ import ProfileBuilderAllinOne from "./profile/profilebuidlerallinone";
 import TenderCreatorAllinOne from "./tendercreator/tendercreatorallinone";
 import ProposalListToMyTender from "./proposals/proposallisttomytender";
 import App1 from "./admin-panel/App1";
-import TenderListPublic from "./tender/tenderlistpublic";
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -94,10 +93,20 @@ const client = new ApolloClient({
 
 function App() {
 
-  const useridfromlocalstorage = window.localStorage.getItem("userid");
-  console.log(useridfromlocalstorage);
+  // const useridfromlocalstorage = window.localStorage.getItem("userid");
+  // const companyidfromlocalstorage= window.localstor.getItem("companyid");
+
+  // console.log(useridfromlocalstorage);
 
   const isLoggedIn = localStorage.getItem('userid') !== null;
+  const hasCompanyPage = localStorage.getItem('companyid') !== null;
+  
+  // const loggedInNoCompanyPage = null
+  
+  // if((isLoggedIn === true) && (hasCompanyPage === true)) {
+  //   loggedInandhasCompanyPage  = true;
+  // }
+  
   console.log(isLoggedIn);
 
   return (
@@ -137,24 +146,23 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<SignIn />} />
             <Route path="/register" element={<SignUp />} />
-            <Route path="/admin" element={<App1/>} />
-            <Route path="/tenderlistpublic" element={<TenderListPublic/>} />
+            {/* <Route path="/admin" element={<App1/>} /> */}
             
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/userhome" element= {isLoggedIn ? <UserHome /> : <SignIn />} />
-            <Route path="/myproposals" element={isLoggedIn ? <ProposalListMine />: <SignIn />} />
-            <Route path="/tendercreator" element={isLoggedIn ? <TenderCreatorAllinOne />: <SignIn/>} />
-            <Route path="/messages" element={isLoggedIn ? <Messages />: <SignIn/>} />
+            <Route path="/myproposals" element={hasCompanyPage ? <ProposalListMine />: <ProfileBuilderAllinOne />} />
+            <Route path="/tendercreator" element={hasCompanyPage ? <TenderCreatorAllinOne />: <ProfileBuilderAllinOne/>} />
+            <Route path="/messages" element={hasCompanyPage ? <Messages />: <SignIn/>} />
             <Route path="/tenderdetail" element={<TenderDetail />} />
-            <Route path="/profilepagemine" element={isLoggedIn ? <ProfilePageMine />: <SignIn/>} />
-            <Route path="/profilepageothers" element={isLoggedIn ? <ProfilePageOthers />: <SignIn/>} />
-            <Route path="/biddingform" element={isLoggedIn ? <BiddingForm />: <SignIn/>} />
-            <Route path="/proposaldetails" element={isLoggedIn ? <ProposalDetail /> : <SignIn/>} />
-            <Route path="/insertproposal" element={isLoggedIn ? <BiddingForm /> : <SignIn/>} />
-            <Route path="/mytenders" element={isLoggedIn ? <TenderListMine /> : <SignIn/>} />
-            <Route path="/mytendersdetail" element={isLoggedIn ? <TenderDetailsMine /> : <SignIn/>} />
-            <Route path="/profilebuilder" element={isLoggedIn ? <ProfileBuilderAllinOne /> : <SignIn/>} />
-            <Route path="/proposalslisttomytender" element={isLoggedIn ? <ProposalListToMyTender /> : <SignIn/>} />
+            <Route path="/profilepagemine" element={hasCompanyPage ? <ProfilePageMine />: <SignIn/>} />
+            <Route path="/profilepageothers" element={ <ProfilePageOthers />} />
+            <Route path="/biddingform" element={hasCompanyPage ? <BiddingForm />: <SignIn/>} />
+            <Route path="/proposaldetails" element={hasCompanyPage ? <ProposalDetail /> : <SignIn/>} />
+            <Route path="/insertproposal" element={hasCompanyPage ? <BiddingForm /> : <SignIn/>} />
+            <Route path="/mytenders" element={hasCompanyPage ? <TenderListMine /> : <SignIn/>} />
+            <Route path="/mytendersdetail" element={hasCompanyPage ? <TenderDetailsMine /> : <SignIn/>} />
+            <Route path="/profilebuilder" element={hasCompanyPage ? <ProfileBuilderAllinOne /> : <SignIn/>} />
+            <Route path="/proposalslisttomytender" element={hasCompanyPage ? <ProposalListToMyTender /> : <SignIn/>} />
 
             
             

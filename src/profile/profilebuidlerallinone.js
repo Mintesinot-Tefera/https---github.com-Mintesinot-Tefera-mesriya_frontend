@@ -29,29 +29,17 @@ function ProfileBuilderAllinOne() {
     const [action, setAction] = useState("");
 
 
-    const [insert_company_page, { error, loading2 }] = useMutation(INSERT_COMPANY_PAGE
-        // ,
-
-        // {
-        //     onCompleted: () => {
-        //         const { error2, loading, data } = useLazyQuery(GET_COMPANY_FROM_USER_ACCOUNT,
-        //             {
-        //                 variables: { id: useridfromlocalstorage }
-        //             });
-
-        //         console.log("runs on success")
-        //     }
-        // }
+    const [insert_company_page, { error, loading }] = useMutation(INSERT_COMPANY_PAGE
     );
 
-    const navigateToUserHome = () => {
-        navigate(`/login`);
+    const navigateToLogin = () => {
+        navigate('/login');
     };
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        insert_company_page(
+        var x =insert_company_page(
             {
                 variables: {
                     company_name: companynameInput,
@@ -68,7 +56,7 @@ function ProfileBuilderAllinOne() {
                 }
             })
 
-        // if (data) {
+        if (x) {
         //     if (data.user_account[0].company_pages[0]) {
         //         window.localStorage.setItem("companyid", data.user_account[0].company_pages[0].id);
         //         console.log("if true "+data)
@@ -81,9 +69,9 @@ function ProfileBuilderAllinOne() {
         //     }
         // }
 
-        navigateToUserHome();
+        navigateToLogin();
     }
-
+}
 
     return (
         <div className="sm:px-10 lg:px-20  bg-gray-300 h-fit pt-8 pb-32" >
@@ -135,7 +123,7 @@ function ProfileBuilderAllinOne() {
                                     type="text"
                                     id="last_name"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="የድርጅት አይነት (required , ex. NGO)"
+                                    placeholder="የድርጅት አይነት (required , ex. NGO, PLC, LLC)"
                                     required=""
                                     onChange={(e) => {
                                         setCompanytypenameInput(e.target.value);

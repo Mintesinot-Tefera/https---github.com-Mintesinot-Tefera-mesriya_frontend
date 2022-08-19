@@ -69,7 +69,8 @@ export default function TenderList() {
                       className="mb-4"
                       color="textPrimary"
                     >
-                      ሙሉ ክፍያ 100000
+                     {val.updated_at}
+
                     </Typography>
                     <Typography
                       component="span"
@@ -85,11 +86,11 @@ export default function TenderList() {
                       className="mb-10"
                       color="textPrimary"
                     >
-                      ከቅኑ 9፡00 ሰአት
+                      {val.bid_document_price}
                     </Typography>
 
                   </div>
-                  {" ለአዲስ 17ኛ ፎቅ ህንጻ የሚሆን ኤሌትሪክ ዝርጋታ  በ ስኔ 28 ቀን እና…"}
+                  {val.category}
                 </React.Fragment>
               }
             />
@@ -105,7 +106,5 @@ export default function TenderList() {
       })}
     </List>
 
-
-    // </div>
   );
 }

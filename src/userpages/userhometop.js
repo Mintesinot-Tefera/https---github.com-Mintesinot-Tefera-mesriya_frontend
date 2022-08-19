@@ -26,29 +26,34 @@ function UserHomeTop() {
 
   const { error: errorR, loading: loadingR, data: dataR } = useQuery(GET_COMPANY_FROM_USER_ACCOUNT,
     {
+      onCompleted: () => {
+        handleButtonclick();
+      }
+    },
+    {
       variables: { _eq: useridfromlocalstorage }
     });
 
 
   const handleButtonclick = () => {
 
-
+   
     if (dataR) {
 
-      console.log(dataR.user_account[0].company_pages[0].id)
+      // console.log(dataR.user_account[0].company_pages[0].id)
       if (dataR.user_account[0].company_pages[0].id) {
         window.localStorage.setItem("companyid", dataR.user_account[0].company_pages[0].id)
         navigateToProfilePageMine();
       }
-      else if (companyidfromlocalstorage && (companyidfromlocalstorage !== null) && (companyidfromlocalstorage !== "null")) {
-        // console.log(data.user_account_by_pk.company_pages[0].id)
-        window.localStorage.setItem("companyid", data.user_account_by_pk.company_pages[0].id)
-        navigateToProfilePageMine();
-      }
-      else {
-        navigateToBuilderPage();
+    }
+    else if ((companyidfromlocalstorage !== null) && (companyidfromlocalstorage !== "null")) {
+      // console.log(data.user_account_by_pk.company_pages[0].id)
+      // window.localStorage.setItem("companyid", data.user_account_by_pk.company_pages[0].id)
+      navigateToProfilePageMine();
+    }
+    else {
+      navigateToBuilderPage();
 
-      }
     }
   }
 

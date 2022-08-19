@@ -157,9 +157,8 @@ mutation insert_tenders($bid_no: String!,
   $requirements_doc_link: String!, 
   $tender_poster_company_id: Int!, 
   $title: String!, 
-  $status: String!, 
   $closing_date: date = "") {
-  insert_tenders(objects: {bid_no: $bid_no, bidding_hosting_location: $bidding_hosting_location, category: $category, description: $description, mode_of_procurement: $mode_of_procurement, procurement_type: $procurement_type, requirements_doc_link: $requirements_doc_link, tender_poster_company_id: $tender_poster_company_id, title: $title, status: $status, closing_date: $closing_date}) {
+  insert_tenders(objects: {bid_no: $bid_no, bidding_hosting_location: $bidding_hosting_location, category: $category, description: $description, mode_of_procurement: $mode_of_procurement, procurement_type: $procurement_type, requirements_doc_link: $requirements_doc_link, tender_poster_company_id: $tender_poster_company_id, title: $title, closing_date: $closing_date}) {
     returning {
       bid_document_price
       bid_no

@@ -7,7 +7,7 @@ import { useQuery, useLazyQuery, gql } from "@apollo/client";
 function TenderDetail() {
 
   const tenderidfromlocalstorage = window.localStorage.getItem("tenderid");
-  const companyidfromlocalstorage = window.localStorage.getItem("companyid")
+  const companyidfromlocalstorage = window.localStorage.getItem("companyid");
 
 
   const { error, loading, data } = useQuery(TENDER_DETAILS, {
@@ -49,18 +49,6 @@ function TenderDetail() {
                 <strong>{data ? data.tenders_by_pk.title : "no tender"}</strong><br />
                 {data ? data.tenders_by_pk.description : "no tender"}
 
-
-                {/* <strong> ORGANIZATION FOR WELFARE AND DEVELOPMENT IN ACTION
-
-                  INVITATION TO BID</strong><br /> */}
-
-                {/* Organization for Welfare and Development in Action (OWDA) is a non-governmental humanitarian organization,
-                established in 1999 in Jigjiga,
-                Ethiopia, with the objective of serving pastoral and agro-pastoral communities in the Somali Regional State.
-                The ORGANIZATION FOR WELFARE AND DEVELOPMENT IN ACTION (OWDA) has received a project entitled emergency project
-                to provide food assistance for drought-affected people in the Somali region of Ethiopia. The project will prioritize
-                highly vulnerable community members, including pregnant and lactating women, elderly and children, female-headed households,
-                IDPs, and people with disabilities in the Somali Region. */}
               </p><br />
               <div><strong>Category:  </strong>
                 <p>{data ? data.tenders_by_pk.category : "no tender"}</p>
